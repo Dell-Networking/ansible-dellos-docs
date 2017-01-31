@@ -6,10 +6,21 @@ The Dell EMC Networking Ansible roles facilitate the provisioning of devices run
 These roles are abstracted for OS6, OS9, and OS10. The following roles are currently available:
 
 
+ACL Role
+----------
+The `dellos-acl <https://galaxy.ansible.com/Dell-Networking/dellos-acl/>`_ role facilitates the configuration of an access control list (ACL). It supports the configuration of different types of ACLs (standard and extended) for both IPv4 and IPv6, and assigns the access-class to the line terminals. This role is currently supported only for OS9.
+
+
 BGP Role
 -----------
 
 The `dellos-bgp <https://galaxy.ansible.com/Dell-Networking/dellos-bgp/>`_ role facilitates the configuration of Border Gateway Protocol (BGP) attributes. It supports the configuration of router ID, networks, neighbors, and maximum path.
+
+
+DCB Role
+----------
+
+The `dellos-dcb <https://galaxy.ansible.com/Dell-Networking/dellos-dcb/>`_ role facilitates the configuration of Data Center Bridging (DCB). It supports the configuration of DCB map and DCB buffer and assigns them to interfaces. This role is currently supported only for OS9.
 
 
 Interface Role
@@ -31,7 +42,18 @@ The `dellos-system <https://galaxy.ansible.com/Dell-Networking/dellos-system/>`_
 VLAN Role
 ----------
 
-The `dellos-vlan <https://galaxy.ansible.com/Dell-Networking/dellos-vlan/>`_ role facilitates configuring virtual LAN (VLAN) attributes. It supports the creation and deletion of a VLAN and its member ports.
+The `dellos-vlan <https://galaxy.ansible.com/Dell-Networking/dellos-vlan/>`_ role facilitates configuration of virtual LAN (VLAN) attributes. It supports the creation and deletion of a VLAN and its member ports.
+
+VLT Role
+----------
+
+The `dellos-vlt <https://galaxy.ansible.com/Dell-Networking/dellos-vlt/>`_ role facilitates the configuration of Virtual Link Trunking (VLT) attributes. It supports the creation and deletion of VLT links LAG and VLTi link. This role is currently supported only for OS9.
+
+VRP Role
+--------
+
+The `dellos-vrf <https://galaxy.ansible.com/Dell-Networking/dellos-vrf/>`_ role facilitates configuriation of virtual routing and forwarding (VRF) that helps in the partition of physical routers to multiple virtual routers. This role is currently supported only for OS9.
+
 
 xSTP Role
 ------------

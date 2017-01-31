@@ -5,6 +5,21 @@ Release Notes
 
 Release Notes for Dell EMC Networking Ansible support.
 
+Release Version 1.0.5
+----------------------
+
+- New Roles:
+     - dellos-acl
+     - dellos-dcb
+     - dellos-vlt
+     - dellos-vrf
+
+- Updated Roles:
+     - dellos-system (Added support for TACACS)
+     - dellos-bgp (Added support for best path selection & IPv6 neighbors)
+     - dellos-xstp (Added support for addtional xSTP attributes)
+     
+
 Release Version 1.0.0
 ----------------------
 
