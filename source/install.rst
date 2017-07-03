@@ -22,6 +22,20 @@ To install all the Dell EMC Networking Ansible roles use the following command:
 
 Where ``dellemc_roles.txt`` is defined as:: 
 
+	Dell-Networking.dellos.aaa
+	Dell-Networking.dellos.acl
+	Dell-Networking.dellos.dcb
+	Dell-Networking.dellos.dns
+	Dell-Networking.dellos.ecmp
+	Dell-Networking.dellos.lldp	
+	Dell-Networking.dellos.prefix-list
+	Dell-Networking.dellos.sflow
+	Dell-Networking.dellos.vlt
+	Dell-Networking.dellos.vrf
+	Dell-Networking.dellos.vrrp
+	Dell-Networking.dellos.snmp
+	Dell-Networking.dellos.users
+	Dell-Networking.dellos.logging
 	Dell-Networking.dellos.bgp
 	Dell-Networking.dellos.interface
 	Dell-Networking.dellos.lag
@@ -31,19 +45,46 @@ Where ``dellemc_roles.txt`` is defined as::
 
 You can also install a specific Dell EMC Networking Ansible role using one of the following commands:
 
- ``ansible-galaxy install Dell-Networking.dellos.bgp``
-
- ``ansible-galaxy install Dell-Networking.dellos.interface``
-
- ``ansible-galaxy install Dell-Networking.dellos.lag``
-
- ``ansible-galaxy install Dell-Networking.dellos.system``
-
- ``ansible-galaxy install Dell-Networking.dellos.vlan``
-
- ``ansible-galaxy install Dell-Networking.dellos.xstp``
-
-
+	``ansible-galaxy install Dell-Networking.dellos.aaa``
+	
+	``ansible-galaxy install Dell-Networking.dellos.acl``
+	
+	``ansible-galaxy install Dell-Networking.dellos.dcb``
+	
+	``ansible-galaxy install Dell-Networking.dellos.dns``
+	
+	``ansible-galaxy install Dell-Networking.dellos.ecmp``
+	
+	``ansible-galaxy install Dell-Networking.dellos.lldp``
+	
+	``ansible-galaxy install Dell-Networking.dellos.prefix-list``
+	
+	``ansible-galaxy install Dell-Networking.dellos.sflow``
+	
+	``ansible-galaxy install Dell-Networking.dellos.vlt``
+	
+	``ansible-galaxy install Dell-Networking.dellos.vrf``
+	
+	``ansible-galaxy install Dell-Networking.dellos.vrrp``
+	
+	``ansible-galaxy install Dell-Networking.dellos.snmp``
+	
+	``ansible-galaxy install Dell-Networking.dellos.users``
+	
+	``ansible-galaxy install Dell-Networking.dellos.logging``
+	
+	``ansible-galaxy install Dell-Networking.dellos.bgp``
+	
+	``ansible-galaxy install Dell-Networking.dellos.interface``
+	
+	``ansible-galaxy install Dell-Networking.dellos.lag``
+	
+	``ansible-galaxy install Dell-Networking.dellos.system``
+	
+	``ansible-galaxy install Dell-Networking.dellos.vlan``
+	
+	``ansible-galaxy install Dell-Networking.dellos.xstp``
+	
 
 For more information on the Dell EMC Networking Ansible roles, see `Ansible Galaxy <https://galaxy.ansible.com/Dell-Networking/>`_.
 

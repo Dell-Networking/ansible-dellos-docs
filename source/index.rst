@@ -15,6 +15,7 @@ Dell EMC Networking Ansible Documentation
    Installation <install>
    Dell EMC Networking Ansible Modules <modules> 
    Dell EMC Networking Ansible Roles <roles> 
+   Support Matrix <support_matrix>
    Examples <examples>
    FAQ <faq>
    Release Notes <releasenotes>
