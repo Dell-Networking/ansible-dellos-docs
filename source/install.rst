@@ -117,7 +117,7 @@ OS9
 1. Create a username and password for Ansible.
 2. Configure the management interface (for example, static/dynamic IP address).
 3. Enable the SSH server.
-4. Set the maximum connection rate limit.
+4. Set the maximum connection rate limit. (Required for Ansible 2.2 only)
 
 :: 
 
