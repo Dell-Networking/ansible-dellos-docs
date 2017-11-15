@@ -1,19 +1,24 @@
-#######################################################################
+=======================================================================
 Provision CLOS fabric using Dell EMC Networking Ansible modules example
-#######################################################################
+=======================================================================
 
 This example describes how to use Ansible to build a CLOS fabric with Dell EMC Networking OS10 switches. The sample topology is a two-tier CLOS fabric with two spines and four leafs connected as mesh. EBGP is running between the two tiers.
 
 All switches in spine have the same AS number, and each leaf switch has a unique AS number. All AS number used are private. For application load-balancing purposes, the same prefix is advertised from multiple leaf switches and uses *BGP multipath relax* feature.
 
+
 .. figure:: ./_static/topo.png
    :scale: 50 %
    :alt: map to buried treasure
 
-Create simple Ansible playbook
-******************************
+Creating a Simple Ansible Playbook
+----------------------------------
 
-#. Create an inventory file called ``inventory.yaml`` and specify the device IP address.
+STEP 1
+~~~~~~~
+
+Create an inventory file called ``inventory.yaml`` and specify the device IP address:
+
 
 ::
 
@@ -38,7 +43,11 @@ Create simple Ansible playbook
 	spine
 	leaf
 
-#. Create a host variable file called ``host_vars/spine1.yaml``, then define the host, credentials and transport.
+
+STEP 2
+~~~~~~~
+
+Create a host variable file called ``host_vars/spine1.yaml``, then define the host, credentials and transport:
     
 :: 
     
@@ -655,7 +664,11 @@ Create simple Ansible playbook
             access_mode: ro
             state: present
 	  
-#. Create a playbook called ``datacenter.yaml``.
+
+STEP 3
+~~~~~~~
+
+Create a playbook called ``datacenter.yaml``:
 
 :: 
 
@@ -668,8 +681,11 @@ Create simple Ansible playbook
 		- Dell-Networking.dellos-bgp
 		- Dell-Networking.dellos-snmp
 
-#. Execute the playbook.
 
-::
+STEP 4
+~~~~~~
 
-    ansible-playbook -i inventory.yaml datacenter.yaml
+Execute the playbook:
+
+``ansible-playbook -i inventory.yaml datacenter.yaml``
+
