@@ -1,25 +1,21 @@
-===============================================
-Examples of Dell EMC Networking Ansible Modules
-===============================================
+########################################### 
+Dell EMC Networking Ansible module examples
+###########################################
 
-Creating a Simple Ansible Playbook
------------------------------------
+These module examples explain how to create a simple Ansible playbook, run the Dell EMC Networking Ansible modules, then configure a switch using Ansible roles.
 
-STEP 1
-~~~~~~~
+Create simple Ansible playbook
+******************************
 
-Create a inventory file ``inventory.yaml`` and specify the device IP address:
-    
-:: 
+1. Create an inventory file called *inventory.yaml* and specify the IP address.
 
-   spine1 ansible_host=10.11.182.16
+::
 
-STEP 2
-~~~~~~~
+    spine1 ansible_host=10.11.182.16
 
-Create a host variable file ``host_vars/spine1.yaml`` and define the host, credentials, and transport:
-    
-:: 
+2. Create a host variable file called *host_vars/spine1.yaml* then define the host, credentials, and transport.
+
+::
 
     hostname: spine1
     provider:
@@ -30,13 +26,9 @@ Create a host variable file ``host_vars/spine1.yaml`` and define the host, crede
       auth_pass: xxxxx
       transport: cli
 
-STEP 3
-~~~~~~~
+3. Create a playbook called *showver.yaml*.
 
-Create a playbook ``showver.yaml``:
-
-
-:: 
+::
 
   hosts: spine1
   connection: local
@@ -51,96 +43,105 @@ Create a playbook ``showver.yaml``:
 
   - debug: var=show_ver
 
+4. Run the playbook
 
-STEP 4
-~~~~~~
+::
 
-Execute the playbook:
+    ansible-playbook -i inventory.yaml showver.yaml
 
-``ansible-playbook -i inventory.yaml showver.yaml``
-
-
-Running Dell EMC Networking Ansible Examples
----------------------------------------------
+Run Dell EMC Networking Ansible examples
+****************************************
 
 Use these sample Ansible playbooks to understand how to use Dell EMC Networking Ansible modules.
 
-Installation and Setup
-~~~~~~~~~~~~~~~~~~~~~~
+Installation and setup
+======================
 
-1. Install Ansible. See `Ansible documentation <http://docs.ansible.com/ansible/intro_installation.html>`_.
-2. Clone the `Dell EMC Ansible Example <https://github.com/Dell-Networking/ansible-dellos-examples>`_ repository in the Control Machine.
-3. Update the ``inventory.yaml`` file to configure the device IP.
-4. Update the corresponding host variables (for example: ``hosts_var/dellos10_sw1.yaml`` for device credentials).
+1. Install `Ansible <http://docs.ansible.com/ansible/intro_installation.html>`_.
 
+2. Clone the `Ansible-dellos-examples <https://github.com/Dell-Networking/ansible-dellos-examples>`_ repository in the control machine.
 
-Dell EMC Networking OS6
-~~~~~~~~~~~~~~~~~~~~~~~~~
+3. Update the *inventory.yaml* file to configure the device IP.
 
-Example for dellos6_facts module that collects the facts from the OS6 device:
+4. Update the corresponding host variables (use *hosts_var/dellos10_sw1.yaml* for device credentials).
 
-``ansible-playbook -i inventory.yaml getfacts_os6.yaml``
+OS6
+---
 
-Example for dellos6_command module that executes the show version command:
+dellos6_facts module that collects the facts from the OS6 device example
 
-``ansible-playbook -i inventory.yaml showver_os6.yaml``
+::
 
-Example for dellos6_config module that configures the hostname on the OS6 device:
+    ansible-playbook -i inventory.yaml getfacts_os6.yaml
 
-``ansible-playbook -vvv -i inventory.yaml hostname_os6.yaml``
+dellos6_command module that executes the show version command example
 
+::
 
-Dell EMC Networking OS9
-~~~~~~~~~~~~~~~~~~~~~~~~~
+    ansible-playbook -i inventory.yaml showver_os6.yaml
 
-Example for dellos9_facts module that collects the facts from the OS9 device:
+dellos6_config module that configures the hostname on the OS6 device example
 
-``ansible-playbook -i inventory.yaml getfacts_os9.yaml``
-
-Example for dellos9_command module that executes the show version command:
-
-``ansible-playbook -i inventory.yaml showver_os9.yaml``
-
-Example for dellos9_config module that configures the hostname on the OS9 device:
-
-``ansible-playbook -vvv -i inventory.yaml hostname_os9.yaml``
-
-
-Dell EMC Networking OS10
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Example for dellos10_facts module that collects the facts from the OS10 device:
-
-``ansible-playbook -i inventory.yaml getfacts_os10.yaml``
-
-Example for dellos10_command module that executes the show version command:
-
-``ansible-playbook -i inventory.yaml showver_os10.yaml``
-
-Example for dellos10_config module that configures the hostname on the OS10 device:
-
-``ansible-playbook -vvv -i inventory.yaml hostname_os10.yaml``
-
-Example Playbook using Ansible Roles
-------------------------------------
-
-The following examples shows how to use the Ansible Roles to configure the switch
-
-STEP 1
-~~~~~~~
-
-Create a inventory file ``inventory.yaml`` and specify the device IP address:
-    
 :: 
 
-   spine1 ansible_host= <ip_address> ansible_net_os_name= <OS name(dellos9)>
+    ansible-playbook -vvv -i inventory.yaml hostname_os6.yaml
 
-STEP 2
-~~~~~~~
+OS9
+---
 
-Create a host variable file ``host_vars/spine1.yaml`` and define the host, credentials, and transport:
-    
-:: 
+dellos9_facts module that collects the facts from the OS9 device example
+
+::
+
+    ansible-playbook -i inventory.yaml getfacts_os9.yaml
+
+dellos9_command module that executes the show version command example
+
+::
+
+    ansible-playbook -i inventory.yaml showver_os9.yaml
+
+dellos9_config module that configures the hostname on the OS9 device example
+
+::
+
+    ansible-playbook -vvv -i inventory.yaml hostname_os9.yaml
+
+OS10
+----
+
+dellos10_facts module that collects the facts from the OS10 device example
+
+::
+
+    ansible-playbook -i inventory.yaml getfacts_os10.yaml
+
+dellos10_command module that executes the show version command example
+
+::
+
+    ansible-playbook -i inventory.yaml showver_os10.yaml
+
+dellos10_config module that configures the hostname on the OS10 device example
+
+::
+
+    ansible-playbook -vvv -i inventory.yaml hostname_os10.yaml
+
+Playbook using Ansible roles example
+************************************
+
+Use these examples to configure the switch using Ansible roles.
+
+1. Create an inventory file called *inventory.yaml* and specify the device IP address.
+
+::
+
+    spine1 ansible_host= <ip_address> ansible_net_os_name= <OS name(dellos9)>
+
+2. Create a host variable file called *host_vars/spine1.yaml* then define the host, credentials, and transport.
+
+::
 
 	---
 	hostname: dellos9
@@ -197,13 +198,9 @@ Create a host variable file ``host_vars/spine1.yaml`` and define the host, crede
 			  state: present
 		  state: present
 
-STEP 3
-~~~~~~~
+3. Create a playbook called *switch_config.yaml*.
 
-Create a playbook ``switch_config.yaml``:
-
-
-:: 
+::
 
 	---
 	- hosts: dellos9
@@ -213,11 +210,8 @@ Create a playbook ``switch_config.yaml``:
 		- Dell-Networking.dellos-interface
 		- Dell-Networking.dellos-vlan
 
+4. Run the playbook.
 
-STEP 4
-~~~~~~
+::
 
-Execute the playbook:
-
-``ansible-playbook -i inventory.yaml switch_config.yaml``
-
+    ansible-playbook -i inventory.yaml switch_config.yaml

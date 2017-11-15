@@ -17,6 +17,9 @@ Dell EMC Networking Ansible Documentation
    Dell EMC Networking Ansible Roles <roles> 
    Support Matrix <support_matrix>
    Examples <examples>
+   CLOS Fabric Example <clos_fabric_example>
+   Hot Swap Example <hot_swap_example>
+   Image upgrade Example <image_upgrade_example>
    FAQ <faq>
    Release Notes <releasenotes>
    Support <support>

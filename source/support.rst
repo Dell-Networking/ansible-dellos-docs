@@ -1,33 +1,39 @@
+####### 
+Support
+#######
 
-========
-Support 
-========
-
-Submit issues for Dell EMC Networking modules at: `Ansible Github Issues <https://github.com/ansible/ansible-modules-core/issues>`_
+You can submit issues for Dell EMC Networking modules at `Ansible Github Issues <https://github.com/ansible/ansible-modules-core/issues>`_.
 
 Submit issues for Dell EMC Networking roles at:
 
-- `AAA Role <https://github.com/Dell-Networking/ansible-role-dellos-aaa/issues>`_
-- `ACL Role <https://github.com/Dell-Networking/ansible-role-dellos-acl/issues>`_
-- `BGP Role <https://github.com/Dell-Networking/ansible-role-dellos-bgp/issues>`_
-- `DCB Role <https://github.com/Dell-Networking/ansible-role-dellos-dcb/issues>`_
-- `DNS Role  <https://github.com/Dell-Networking/ansible-role-dellos-dns/issues>`_
-- `ECMP Role <https://github.com/Dell-Networking/ansible-role-dellos-ecmp/issues>`_
-- `Interface Role <https://github.com/Dell-Networking/ansible-role-dellos-interface/issues>`_
-- `LLDP Role <https://github.com/Dell-Networking/ansible-role-dellos-lldp/issues>`_
-- `Logging Role  <https://github.com/Dell-Networking/ansible-role-dellos-logging/issues>`_
-- `Prefix list Role <https://github.com/Dell-Networking/ansible-role-dellos-prefix-list/issues>`_
-- `sFlow Role <https://github.com/Dell-Networking/ansible-role-dellos-sflow/issues>`_
-- `SNMP Role <https://github.com/Dell-Networking/ansible-role-dellos-snmp/issues>`_
-- `System Role <https://github.com/Dell-Networking/ansible-role-dellos-system/issues>`_
-- `Users Role <https://github.com/Dell-Networking/ansible-role-dellos-users/issues>`_
-- `VLAN Role <https://github.com/Dell-Networking/ansible-role-dellos-vlan/issues>`_
-- `VLT Role <https://github.com/Dell-Networking/ansible-role-dellos-vlt/issues>`_
-- `VRF Role <https://github.com/Dell-Networking/ansible-role-dellos-vrf/issues>`_
-- `VRRP Role <https://github.com/Dell-Networking/ansible-role-dellos-vrrp/issues>`_
-- `xSTP Role <https://github.com/Dell-Networking/ansible-role-dellos-xstp/issues>`_
+- `dellos-aaa role <https://github.com/Dell-Networking/ansible-role-dellos-aaa/issues>`_
+- `dellos-acl role <https://github.com/Dell-Networking/ansible-role-dellos-acl/issues>`_
+- `dellos-bgp role <https://github.com/Dell-Networking/ansible-role-dellos-bgp/issues>`_
+- `dellos-copy-config role <https://github.com/Dell-Networking/ansible-role-dellos-copy-config/issues>`_
+- `dellos-dcb role <https://github.com/Dell-Networking/ansible-role-dellos-dcb/issues>`_
+- `dellos-dns role  <https://github.com/Dell-Networking/ansible-role-dellos-dns/issues>`_
+- `dellos-ecmp role <https://github.com/Dell-Networking/ansible-role-dellos-ecmp/issues>`_
+- `dellos-flow-monitor role <https://github.com/Dell-Networking/ansible-role-dellos-flow-monitor/issues>`_
+- `dellos-image-upgrade role <https://github.com/Dell-Networking/ansible-role-dellos-image-upgrade/issues>`_
+- `dellos-interface role <https://github.com/Dell-Networking/ansible-role-dellos-interface/issues>`_
+- `dellos-lag role <https://github.com/Dell-Networking/ansible-role-dellos-lag/issues>`_
+- `dellos-lldp role <https://github.com/Dell-Networking/ansible-role-dellos-lldp/issues>`_
+- `dellos-logging role  <https://github.com/Dell-Networking/ansible-role-dellos-logging/issues>`_
+- `dellos-ntp role <https://github.com/Dell-Networking/ansible-role-dellos-ntp/issues>`_
+- `dellos-prefix-list role <https://github.com/Dell-Networking/ansible-role-dellos-prefix-list/issues>`_
+- `dellos-qos role <https://github.com/Dell-Networking/ansible-role-dellos-qos/issues>`_
+- `dellos-route-map role <https://github.com/Dell-Networking/ansible-role-dellos-route-map/issues>`_
+- `dellos-sflow role <https://github.com/Dell-Networking/ansible-role-dellos-sflow/issues>`_
+- `dellos-snmp role <https://github.com/Dell-Networking/ansible-role-dellos-snmp/issues>`_
+- `dellos-system role <https://github.com/Dell-Networking/ansible-role-dellos-system/issues>`_
+- `dellos-users role <https://github.com/Dell-Networking/ansible-role-dellos-users/issues>`_
+- `dellos-vlan role <https://github.com/Dell-Networking/ansible-role-dellos-vlan/issues>`_
+- `dellos-vlt role <https://github.com/Dell-Networking/ansible-role-dellos-vlt/issues>`_
+- `dellos-vrf role <https://github.com/Dell-Networking/ansible-role-dellos-vrf/issues>`_
+- `dellos-vrrp role <https://github.com/Dell-Networking/ansible-role-dellos-vrrp/issues>`_
+- `dellos-xstp role <https://github.com/Dell-Networking/ansible-role-dellos-xstp/issues>`_
 
 Contact
---------
-Send general comments and feedback to: feedback-ansible-dell-networking@dell.com
+-------
 
+You can send general comments and feedback to feedback-ansible-dell-networking@dell.com.
