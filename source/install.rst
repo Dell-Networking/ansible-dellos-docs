@@ -22,32 +22,32 @@ where ``dellemc_roles.txt`` is defined as:
 
 :: 
 
-  Dell-Networking.dellos.aaa
-  Dell-Networking.dellos.acl
-  Dell-Networking.dellos.bgp
-  Dell-Networking.dellos.copy-config
-  Dell-Networking.dellos.dcb
-  Dell-Networking.dellos.dns
-  Dell-Networking.dellos.ecmp
-  Dell-Networking.dellos.flow-monitor
-  Dell-Networking.dellos.image-upgrade
+  Dell-Networking.dellos-aaa
+  Dell-Networking.dellos-acl
+  Dell-Networking.dellos-bgp
+  Dell-Networking.dellos-copy-config
+  Dell-Networking.dellos-dcb
+  Dell-Networking.dellos-dns
+  Dell-Networking.dellos-ecmp
+  Dell-Networking.dellos-flow-monitor
+  Dell-Networking.dellos-image-upgrade
   Dell-Networking.dellos-interface
-  Dell-Networking.dellos.lag
-  Dell-Networking.dellos.lldp
-  Dell-Networking.dellos.logging
-  Dell-Networking.dellos.ntp
-  Dell-Networking.dellos.prefix-list
-  Dell-Networking.dellos.qos
-  Dell-Networking.dellos.route-map
-  Dell-Networking.dellos.sflow
-  Dell-Networking.dellos.snmp
-  Dell-Networking.dellos.system
-  Dell-Networking.dellos.users
-  Dell-Networking.dellos.vlan
-  Dell-Networking.dellos.vlt
-  Dell-Networking.dellos.vrf
-  Dell-Networking.dellos.vrrp
-  Dell-Networking.dellos.xstp
+  Dell-Networking.dellos-lag
+  Dell-Networking.dellos-lldp
+  Dell-Networking.dellos-logging
+  Dell-Networking.dellos-ntp
+  Dell-Networking.dellos-prefix-list
+  Dell-Networking.dellos-qos
+  Dell-Networking.dellos-route-map
+  Dell-Networking.dellos-sflow
+  Dell-Networking.dellos-snmp
+  Dell-Networking.dellos-system
+  Dell-Networking.dellos-users
+  Dell-Networking.dellos-vlan
+  Dell-Networking.dellos-vlt
+  Dell-Networking.dellos-vrf
+  Dell-Networking.dellos-vrrp
+  Dell-Networking.dellos-xstp
 
 You can also install an individual Dell EMC Networking Ansible role using a single command. For example, to install the AAA role use ``ansible-galaxy install Dell-Networking.dellos.aaa``.
 
