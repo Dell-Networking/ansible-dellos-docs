@@ -14,8 +14,7 @@ All switches in spine have the same AS number, and each leaf switch has a unique
 Creating a Simple Ansible Playbook
 ----------------------------------
 
-STEP 1
-~~~~~~~
+**Step 1**
 
 Create an inventory file called ``inventory.yaml`` and specify the device IP address:
 
@@ -44,8 +43,7 @@ Create an inventory file called ``inventory.yaml`` and specify the device IP add
 	leaf
 
 
-STEP 2
-~~~~~~~
+**Step 2**
 
 Create a host variable file called ``host_vars/spine1.yaml``, then define the host, credentials and transport:
     
@@ -664,9 +662,7 @@ Create a host variable file called ``host_vars/spine1.yaml``, then define the ho
             access_mode: ro
             state: present
 	  
-
-STEP 3
-~~~~~~~
+**Step 3**
 
 Create a playbook called ``datacenter.yaml``:
 
@@ -681,11 +677,10 @@ Create a playbook called ``datacenter.yaml``:
 		- Dell-Networking.dellos-bgp
 		- Dell-Networking.dellos-snmp
 
-
-STEP 4
-~~~~~~
+**Step 4**
 
 Execute the playbook:
 
 ``ansible-playbook -i inventory.yaml datacenter.yaml``
 
+(c) 2017 Dell Inc. and its subsidiaries. All Rights Reserved.
