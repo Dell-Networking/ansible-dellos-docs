@@ -132,7 +132,7 @@ Run the playbook.
 ``ansible-playbook -i inventory.yaml hot_swap_pre_step.yaml``
 
 Part 2
-------
+~~~~~~
 
 1. After shutting the neighborship in the spine2 switch, check if the ECMP path to spine2 is deleted in each of the leaf switches.
 
@@ -246,7 +246,7 @@ Create a playbook called ``waitfor_ecmp_path_delete.yaml``
 ``ansible-playbook -i inventory.yaml waitfor_ecmp_path_delete.yaml``
 
 Part 3
-------
+~~~~~~
 
 1. After checking the spine2 ECMP path deletion in all leaf switches, replace spine2 with a new switch. The new spine2 switch should be connected as the old spine switch after it boots up with an OS10 image.
 
@@ -314,3 +314,5 @@ Execute the playbook:
 ::
 
   ansible-playbook -i inventory.yaml hot_swap_post_step.yaml
+  
+(c) 2017 Dell Inc. or its subsidiaries. All Rights Reserved.  
