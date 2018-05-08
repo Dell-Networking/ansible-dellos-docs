@@ -114,5 +114,6 @@ OS10
   OS10(conf-if-ma-1/1/1)# do commit
   OS10(conf-if-ma-1/1/1)# exit
 
-.. note:: SSH is enabled in OS10 by default.
+> **NOTE**: SSH is enabled in OS10 by default.
 
+(c) 2017 Dell Inc. or its subsidiaries. All Rights Reserved.
