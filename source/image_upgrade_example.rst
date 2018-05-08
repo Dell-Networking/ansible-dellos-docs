@@ -1,18 +1,16 @@
 ==========================================================================
-Use Ansible to install or upgrade devices running Dell EMC Networking OS10
+Install or upgrade devices running Dell EMC Networking OS10 using Ansible
 ==========================================================================
 
 This example explains how to use Ansible to install or upgrade the software image on a device running Dell EMC Networking OS10. The example playbook uses the *dellos-image-upgrade* role to upgrade or install an OS10 image on a specified switch. Before using Ansible to install the software image, you must download the software image via FTP/TFTP/SCP/HTTPDS, then specify the path to the image in the playbook. 
 
 The *dellos-image-upgrade* role uses the ``dellos10_command`` to install or upgrade the switch, then and ``wait_for`` is used to identify the progress of the upgrade operation. Validation of the upgrade operation is handled using the ``dellos10_facts`` module.
 
+Creating simple Ansible playbook
+--------------------------------
 
-
-Creating a Simple Ansible Playbook
-----------------------------------
-
-STEP 1
-~~~~~~~
+Step 1
+~~~~~~
 
 Create an inventory file called ``inventory.yaml``, then specify the device IP address.
 
@@ -27,10 +25,8 @@ Create an inventory file called ``inventory.yaml``, then specify the device IP a
 	[datacenter:children]
 	spine
 	
-
-
-STEP 2
-~~~~~~~
+Step 2
+~~~~~~
 
 Create a host variable file called ``host_vars/spine1.yaml`` then define the host, credentials, and transport:
     
@@ -48,9 +44,9 @@ Create a host variable file called ``host_vars/spine1.yaml`` then define the hos
       software_image_url: tftp://1.1.1.1/PKGS_OS10-Enterprise-10.2.9999E.5790-installer-x86_64.bin
       software_version: 10.2.9999E
 	  
+Step 3
+~~~~~~
 
-STEP 3
-~~~~~~~
 Create a playbook called ``datacenter.yaml``:
 
 :: 
@@ -62,11 +58,11 @@ Create a playbook called ``datacenter.yaml``:
 	  roles:		
 		- Dell-Networking.dellos-image-upgrade
 
-
-STEP 4
+Step 4
 ~~~~~~
 
 Execute the playbook:
 
 ``ansible-playbook -i inventory.yaml datacenter.yaml``
 
+(c) 2017 Dell Inc. or its subsidiaries. All Rights Reserved.
