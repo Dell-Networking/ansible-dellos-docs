@@ -14,6 +14,6 @@ See `Integration: Network Automation with Ansible <https://www.ansible.com/netwo
 Dell EMC Networking Ansible integration
 ***************************************
 
-Starting with Ansible 2.2, the Ansible core supports Dell EMC Networking modules. You can use these to manage and automate your Dell EMC switches running OS6, OS9, and OS10. All modules are currently executed in local connection mode, using CLI and SSH transport.
+Starting with Ansible 2.3, the Ansible core supports Dell EMC Networking modules. You can use these to manage and automate your Dell EMC switches running OS6, OS9, and OS10. All modules are currently executed in local connection mode, using CLI and SSH transport.
 
 See `Integration: Ansible and Dell EMC Networking <https://www.ansible.com/ansible-dell-networking>`_ for more information.

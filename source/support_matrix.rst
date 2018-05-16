@@ -13,7 +13,7 @@ This table shows the support matrix between Ansible roles and Dell EMC Networkin
 +---------------------+-------------+--------------+-------------+
 | dellos-bgp          |     Yes     |     Yes      |    Yes      |
 +---------------------+-------------+--------------+-------------+
-| dellos-copy-config  |     No      |     No       |    Yes      |
+| dellos-copy-config  |     No      |     Yes      |    Yes      |
 +---------------------+-------------+--------------+-------------+
 | dellos-dcb          |     No      |     Yes      |    Yes      |
 +---------------------+-------------+--------------+-------------+
@@ -33,7 +33,7 @@ This table shows the support matrix between Ansible roles and Dell EMC Networkin
 +---------------------+-------------+--------------+-------------+
 | dellos-logging      |     Yes     |     Yes      |    Yes      |
 +---------------------+-------------+--------------+-------------+
-| dellos-ntp          |     No      |     No       |    Yes      |
+| dellos-ntp          |     Yes     |     Yes      |    Yes      |
 +---------------------+-------------+--------------+-------------+
 | dellos-prefix-list  |     No      |     Yes      |    Yes      |
 +---------------------+-------------+--------------+-------------+
@@ -55,7 +55,7 @@ This table shows the support matrix between Ansible roles and Dell EMC Networkin
 +---------------------+-------------+--------------+-------------+
 | dellos-vrf          |     No      |     Yes      |    Yes      |
 +---------------------+-------------+--------------+-------------+
-| dellos-vrrp         |     No      |     Yes      |    Yes      |
+| dellos-vrrp         |     Yes     |     Yes      |    Yes      |
 +---------------------+-------------+--------------+-------------+
 | dellos-xstp         |     Yes     |     Yes      |    Yes      |
 +---------------------+-------------+--------------+-------------+
