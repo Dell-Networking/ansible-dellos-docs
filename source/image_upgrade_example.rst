@@ -29,9 +29,10 @@ Step 2
 ~~~~~~
 
 Create a host variable file called ``host_vars/spine1.yaml`` then define the host, credentials, and transport:
-    
-:: 
-        hostname: spine1
+
+::
+
+	hostname: spine1
         ansible_ssh_user: xxxxx
         ansible_ssh_pass: xxxxx
         ansible_network_os: dellos10
@@ -40,7 +41,7 @@ Create a host variable file called ``host_vars/spine1.yaml`` then define the hos
             operation_type: install
             software_image_url: tftp://1.1.1.1/PKGS_OS10-Enterprise-10.2.9999E.5790-installer-x86_64.bin
             software_version: 10.2.9999E
-	  
+
 Step 3
 ~~~~~~
 
