@@ -18,27 +18,26 @@ Create simple Ansible playbook
 ::
 
     hostname: spine1
-    provider:
-      host: "{{ hostname }}"
-      username: xxxxx
-      password: xxxxx
-      authorize: yes
-      auth_pass: xxxxx
-      transport: cli
+    ansible_ssh_user: xxxxx
+    ansible_ssh_pass: xxxxx
+    ansible_become_method: enable
+    ansible_become: yes
+    ansible_become_pass: xxxxx
+    ansible_network_os: xxxxx
+
 
 3. Create a playbook called *showver.yaml*.
 
 ::
 
   hosts: spine1
-  connection: local
+  connection: network_cli
   gather_facts: no
 
   tasks:
   - name: "Get Dell EMC OS9 Show version"
     dellos9_command:
       commands: ['show version']
-      provider: "{{ cli }}"
     register: show_ver
 
   - debug: var=show_ver
@@ -137,7 +136,7 @@ Use these examples to configure the switch using Ansible roles.
 
 ::
 
-    spine1 ansible_host= <ip_address> ansible_net_os_name= <OS name(dellos9)>
+    spine1 ansible_host= <ip_address> 
 
 2. Create a host variable file called *host_vars/spine1.yaml* then define the host, credentials, and transport.
 
@@ -146,13 +145,12 @@ Use these examples to configure the switch using Ansible roles.
 	---
 	hostname: dellos9
 
-	cli:
-	  host: "{{ ansible_host }}"
-	  username: "{{ dellos9_cli_user | default('admin') }}"
-	  password: "{{ dellos9_cli_pass | default('admin') }}"
-	  authorize: true
-	  auth_pass: "{{ dellos9_cli_en_pass | default('ansible') }}"
-	  transport: cli
+        ansible_ssh_user: xxxxx
+        ansible_ssh_pass: xxxxx
+        ansible_become: yes
+        ansible_become_method: enable
+        ansible_become_pass: xxxxx
+        ansible_network_os: dellos9
 
 	
 	dellos_interface:
@@ -205,7 +203,7 @@ Use these examples to configure the switch using Ansible roles.
 	---
 	- hosts: dellos9
 	  gather_facts: no
-	  connection: local
+	  connection: network_cli
 	  roles:		
 		- Dell-Networking.dellos-interface
 		- Dell-Networking.dellos-vlan
