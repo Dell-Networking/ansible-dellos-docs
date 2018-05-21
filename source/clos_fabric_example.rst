@@ -21,12 +21,12 @@ Create an inventory file called ``inventory.yaml`` and specify the device IP add
 
 ::
 
-	spine1 ansible_host=10.11.182.25 ansible_net_os_name="dellos10"
-	spine2 ansible_host=10.11.182.26 ansible_net_os_name="dellos10"
-	leaf1 ansible_host=10.11.182.27 ansible_net_os_name="dellos10"
-	leaf2 ansible_host=10.11.182.28 ansible_net_os_name="dellos10"
-	leaf3 ansible_host=10.11.182.29 ansible_net_os_name="dellos10"
-	leaf4 ansible_host=10.11.182.30 ansible_net_os_name="dellos10"
+	spine1 ansible_host=10.11.182.25
+	spine2 ansible_host=10.11.182.26 
+	leaf1 ansible_host=10.11.182.27 
+	leaf2 ansible_host=10.11.182.28 
+	leaf3 ansible_host=10.11.182.29 
+	leaf4 ansible_host=10.11.182.30
 
 	[spine]
 	spine1
@@ -50,12 +50,9 @@ Create a host variable file called ``host_vars/spine1.yaml``, then define the ho
 :: 
     
     hostname: spine1
-    provider:
-      host: "{{ hostname }}"
-      username: xxxxx
-      password: xxxxx
-      authorize: yes
-      auth_pass: xxxxx  
+    ansible_ssh_user: xxxxx
+    ansible_ssh_pass: xxxxx
+    ansible_network_os: dellos10
     dellos_interface:
         ethernet 1/1/1:
                 desc: "Connected to leaf 1"
@@ -181,12 +178,9 @@ Create a host variable file called ``host_vars/spine1.yaml``, then define the ho
 :: 
 
     hostname: spine2
-    provider:
-      host: "{{ hostname }}"
-      username: xxxxx
-      password: xxxxx
-      authorize: yes
-      auth_pass: xxxxx
+    ansible_ssh_user: xxxxx
+    ansible_ssh_pass: xxxxx
+    ansible_network_os: dellos10
     dellos_interface:
         ethernet 1/1/1:
                 desc: "Connected to leaf 1" 
@@ -312,12 +306,9 @@ Create a host variable file called ``host_vars/spine1.yaml``, then define the ho
 :: 
 
     hostname: leaf1
-    provider:
-      host: "{{ hostname }}"
-      username: xxxxx
-      password: xxxxx
-      authorize: yes
-      auth_pass: xxxxx
+    ansible_ssh_user: xxxxx
+    ansible_ssh_pass: xxxxx
+    ansible_network_os: dellos10
     dellos_system:
       hash_algo:
         algo:
@@ -399,12 +390,9 @@ Create a host variable file called ``host_vars/spine1.yaml``, then define the ho
 :: 
 
     hostname: leaf2
-    provider:
-      host: "{{ hostname }}"
-      username: xxxxx
-      password: xxxxx
-      authorize: yes
-      auth_pass: xxxxx            
+    ansible_ssh_user: xxxxx
+    ansible_ssh_pass: xxxxx
+    ansible_network_os: dellos10
     dellos_system:
       hash_algo:
         algo:
@@ -489,12 +477,9 @@ Create a host variable file called ``host_vars/spine1.yaml``, then define the ho
 :: 
 
     hostname: leaf3
-    provider:
-      host: "{{ hostname }}"
-      username: xxxxx
-      password: xxxxx
-      authorize: yes
-      auth_pass: xxxxx         
+    ansible_ssh_user: xxxxx
+    ansible_ssh_pass: xxxxx
+    ansible_network_os: dellos10
     dellos_system:
       hash_algo:
         algo:
@@ -579,12 +564,9 @@ Create a host variable file called ``host_vars/spine1.yaml``, then define the ho
 :: 
 
     hostname: leaf4
-    provider:
-      host: "{{ hostname }}"
-      username: xxxxx
-      password: xxxxx
-      authorize: yes
-      auth_pass: xxxxx        
+    ansible_ssh_user: xxxxx
+    ansible_ssh_pass: xxxxx
+    ansible_network_os: dellos10
     dellos_system:
       hash_algo:
         algo:
@@ -671,7 +653,7 @@ Create a playbook called ``datacenter.yaml``:
 	---
 	- hosts: datacenter
 	  gather_facts: no
-	  connection: local
+	  connection: network_cli
 	  roles:		
 		- Dell-Networking.dellos-interface
 		- Dell-Networking.dellos-bgp

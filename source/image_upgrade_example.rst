@@ -17,7 +17,7 @@ Create an inventory file called ``inventory.yaml``, then specify the device IP a
 
 ::
 
-	spine1 ansible_host=2.2.2.1 ansible_net_os_name="dellos10"
+	spine1 ansible_host=2.2.2.1
 
 	[spine]
 	spine1
@@ -29,21 +29,19 @@ Step 2
 ~~~~~~
 
 Create a host variable file called ``host_vars/spine1.yaml`` then define the host, credentials, and transport:
-    
-:: 
-    
-    hostname: spine1
-    provider:
-      host: "{{ hostname }}"
-      username: xxxxx
-      password: xxxxx
-      authorize: yes
-      auth_pass: xxxxx  
-    dellos_image_upgrade:
-      operation_type: install
-      software_image_url: tftp://1.1.1.1/PKGS_OS10-Enterprise-10.2.9999E.5790-installer-x86_64.bin
-      software_version: 10.2.9999E
-	  
+
+::
+
+	hostname: spine1
+        ansible_ssh_user: xxxxx
+        ansible_ssh_pass: xxxxx
+        ansible_network_os: dellos10
+
+        dellos_image_upgrade:
+            operation_type: install
+            software_image_url: tftp://1.1.1.1/PKGS_OS10-Enterprise-10.2.9999E.5790-installer-x86_64.bin
+            software_version: 10.2.9999E
+
 Step 3
 ~~~~~~
 
@@ -54,7 +52,7 @@ Create a playbook called ``datacenter.yaml``:
 	---
 	- hosts: datacenter
 	  gather_facts: no
-	  connection: local
+	  connection:network_cli
 	  roles:		
 		- Dell-Networking.dellos-image-upgrade
 

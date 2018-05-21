@@ -7,7 +7,7 @@ You can install Ansible roles on the control machine using Dell EMC Networking d
 Ansible modules
 ***************
 
-Dell EMC Networking Ansible modules are part of the Ansible core. Install Ansible 2.2 or later to use these modules. See `Ansible documentation <http://docs.ansible.com/ansible/intro_installation.html>`_ for more information.
+Dell EMC Networking Ansible modules are part of the Ansible core. Install Ansible 2.3 or later to use these modules. See `Ansible documentation <http://docs.ansible.com/ansible/intro_installation.html>`_ for more information.
 
 Ansible roles
 *************

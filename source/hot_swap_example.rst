@@ -24,7 +24,7 @@ Create an inventory file called *inventory.yaml*, then specify the device IP add
 
 ::
 
-    spine2 ansible_host=10.16.204.57 ansible_net_os_name="dellos10"
+    spine2 ansible_host=10.16.204.57 
 
     [spine]
     spine2
@@ -42,12 +42,10 @@ Create a host variable file called ``host_vars/spine2.yaml``, then define the ho
 :: 
 
     hostname: spine2
-    cli:
-      host: "{{ ansible_host }}"
-      username: "{{ dellos10_cli_user | default('admin') }}"
-      password: "{{ dellos10_cli_pass | default('admin') }}"
-      timeout: 300
-      
+    ansible_ssh_user: xxxxx
+    ansible_ssh_pass: xxxxx
+    ansible_network_os: dellos10
+
     copy_running_remote:
         - copy_type: scp
           username: linuxadmin
@@ -107,7 +105,7 @@ Create a playbook called ``hot_swap_pre_step.yaml``:
   ---
   - hosts: datacenter
     gather_facts: no
-    connection: local
+    connection: network_cli
       tasks:
         - name: Assembling configfurations
           assemble: src={{ build_dir }} dest={{ build_dir }}/{{hostname}}.conf regexp='\\S_{{hostname}}\\S'
@@ -118,10 +116,9 @@ Create a playbook called ``hot_swap_pre_step.yaml``:
                  #If the switch asks for credentials for copy command, use the below commented statements to give the prompt and password
                  #prompt: 'admin:'
                  #answer: 'admin'
-            provider: "{{ cli }}"
           with_items: '{{copy_running_remote}}'
   - hosts: datacenter
-    connection: local
+    connection: network_cli
     vars:
       build_dir: "/root/debug"
     roles:
@@ -140,10 +137,10 @@ Create an inventory file called ``inventory.yaml``, then specify the device IP a
 
 ::
 
-    leaf1 ansible_host=10.16.204.27 ansible_net_os_name="dellos10"
-    leaf2 ansible_host=10.16.204.28 ansible_net_os_name="dellos10"
-    leaf3 ansible_host=10.16.204.29 ansible_net_os_name="dellos10"
-    leaf4 ansible_host=10.16.204.30 ansible_net_os_name="dellos10"
+    leaf1 ansible_host=10.16.204.27 
+    leaf2 ansible_host=10.16.204.28 
+    leaf3 ansible_host=10.16.204.29 
+    leaf4 ansible_host=10.16.204.30
 
     [spine]
 
@@ -161,11 +158,9 @@ Create a host variable file called ``host_vars/leaf1.yaml``, then define the hos
 :: 
 
     hostname: leaf1
-    cli:
-      host: "{{ ansible_host }}"
-      username: "{{ dellos10_cli_user | default('admin') }}"
-      password: "{{ dellos10_cli_pass | default('admin') }}"
-      timeout: 300
+    ansible_ssh_user: xxxxx
+    ansible_ssh_pass: xxxxx
+    ansible_network_os: dellos10
 
     remote_neighbor_ip: "100.2.1.1"
 
@@ -175,11 +170,9 @@ Create a host variable file called ``host_vars/leaf2.yaml``, then define the hos
 ::
 
     hostname: leaf2
-    cli:
-      host: "{{ ansible_host }}"
-      username: "{{ dellos10_cli_user | default('admin') }}"
-      password: "{{ dellos10_cli_pass | default('admin') }}"
-      timeout: 300
+    ansible_ssh_user: xxxxx
+    ansible_ssh_pass: xxxxx
+    ansible_network_os: dellos10
 
     remote_neighbor_ip: "100.2.17.1"
 
@@ -189,11 +182,9 @@ Create a host variable file called ``host_vars/leaf3.yaml``, then define the hos
 :: 
 
     hostname: leaf3
-    cli:
-      host: "{{ ansible_host }}"
-      username: "{{ dellos10_cli_user | default('admin') }}"
-      password: "{{ dellos10_cli_pass | default('admin') }}"
-      timeout: 300
+    ansible_ssh_user: xxxxx
+    ansible_ssh_pass: xxxxx
+    ansible_network_os: dellos10
 
     remote_neighbor_ip: "100.2.33.1"
 
@@ -204,11 +195,9 @@ Create a host variable file called ``host_vars/leaf4.yaml``, then define the hos
 
 
     hostname: leaf4
-    cli:
-      host: "{{ ansible_host }}"
-      username: "{{ dellos10_cli_user | default('admin') }}"
-      password: "{{ dellos10_cli_pass | default('admin') }}"
-      timeout: 300
+    ansible_ssh_user: xxxxx
+    ansible_ssh_pass: xxxxx
+    ansible_network_os: dellos10
 
     remote_neighbor_ip: "100.2.49.1"
 
@@ -222,7 +211,7 @@ Create a playbook called ``waitfor_ecmp_path_delete.yaml``
   ---
   - hosts: datacenter
     gather_facts: no
-    connection: local
+    connection: network_cli
     vars:
       build_dir: "/root/debug"
     tasks:
@@ -232,7 +221,6 @@ Create a playbook called ``waitfor_ecmp_path_delete.yaml``
           dellos10_command:
             commands:
                - command: "show ip route bgp | grep {{ remote_neighbor_ip }}"
-            provider: "{{ cli }}"
         retries: 10
         delay: 5
         register: result
@@ -257,7 +245,7 @@ Part 3
 
 :: 
 
-    spine2 ansible_host=x.x.x.x ansible_net_os_name="dellos10"
+    spine2 ansible_host=x.x.x.x 
 
     [spine]
     spine2
@@ -273,12 +261,10 @@ Part 3
 :: 
 
     hostname: spine2
-    cli:
-      host: "{{ ansible_host }}"
-      username: "{{ dellos10_cli_user | default('admin') }}"
-      password: "{{ dellos10_cli_pass | default('admin') }}"
-      timeout: 300
-      
+    ansible_ssh_user: xxxxx
+    ansible_ssh_pass: xxxxx
+    ansible_network_os: dellos10
+
     copy_remote_running:
         - copy_type: scp
           username: linuxadmin
@@ -294,7 +280,7 @@ Create a playbook called ``hot_swap_post_step.yaml``
   ---
   - hosts: datacenter
     gather_facts: no
-    connection: local
+    connection: network_cli
       tasks:
         - name: Assembling configfurations
           assemble: src={{ build_dir }} dest={{ build_dir }}/{{hostname}}.conf regexp='\\S_{{hostname}}\\S'
@@ -305,7 +291,6 @@ Create a playbook called ``hot_swap_post_step.yaml``
                  #If the switch asks for credentials for copy command, use the below commented statements to give the prompt and password
                  #prompt: 'admin:'
                  #answer: 'admin'
-            provider: "{{ cli }}"
           with_items: '{{copy_remote_running}}'
 
 
