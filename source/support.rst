@@ -36,4 +36,4 @@ Submit issues for Dell EMC Networking roles at:
 Contact
 -------
 
-You can send general comments and feedback to feedback-ansible-dell-networking@dell.com.
+You can send general comments and feedback to networking_devops_tools@dell.com.
