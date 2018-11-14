@@ -63,4 +63,3 @@ Execute the playbook:
 
 ``ansible-playbook -i inventory.yaml datacenter.yaml``
 
-(c) 2017 Dell Inc. or its subsidiaries. All Rights Reserved.

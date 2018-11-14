@@ -300,4 +300,3 @@ Execute the playbook:
 
   ansible-playbook -i inventory.yaml hot_swap_post_step.yaml
   
-(c) 2017 Dell Inc. or its subsidiaries. All Rights Reserved.  
