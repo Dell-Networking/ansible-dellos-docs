@@ -7,7 +7,7 @@ You can install Ansible roles on the control machine using Dell EMC Networking d
 Ansible modules
 ***************
 
-Dell EMC Networking Ansible modules are part of the Ansible core. Install Ansible 2.3 or later to use these modules. See `Ansible documentation <http://docs.ansible.com/ansible/intro_installation.html>`_ for more information.
+Dell EMC Networking Ansible modules for dellos9, dellos10 and dellos6 are part of the Ansible core. Install Ansible 2.3 or later to use these modules. To use OpenSwitch Ansible "opx_cps" module, install Ansible 2.7 or later. See `Ansible documentation <http://docs.ansible.com/ansible/intro_installation.html>`_ for more information.
 
 Ansible roles
 *************
@@ -116,4 +116,21 @@ OS10
 
 > **NOTE**: SSH is enabled in OS10 by default.
 
-(c) 2017 Dell Inc. or its subsidiaries. All Rights Reserved.
+OPX
+----
+
+1. Create an Ansible username and password.
+
+#. Configure the Management interface (static/dynamic IP address).
+
+::
+
+  root@os10:/config/home/linuxadmin# useradd testuser
+  root@os10:/config/home/linuxadmin# passwd testuser
+  New password:
+  Retype new password:
+  passwd: password updated successfully
+  root@os10:/config/home/linuxadmin# ifconfig eth0 10.16.148.123 netmask 255.255.255.0 up
+  root@os10:/config/home/linuxadmin# route default gw 10.16.148.254 
+
+

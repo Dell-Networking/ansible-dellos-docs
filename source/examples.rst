@@ -48,6 +48,56 @@ Create simple Ansible playbook
 
     ansible-playbook -i inventory.yaml showver.yaml
 
+Create simple Ansible playbook using connection="netconf"
+*********************************************************
+
+1. Create an inventory file called *inventory.yaml* and specify the IP address.
+
+::
+
+    spine1 ansible_host=10.11.182.16
+
+2. Create a host variable file called *host_vars/spine1.yaml* then define the host, credentials, and transport.
+
+::
+
+    hostname: spine1
+    ansible_ssh_user: xxxxx
+    ansible_ssh_pass: xxxxx
+    ansible_network_os: dellos10
+
+3. Create a playbook called *create_vlan.yaml*.
+
+::
+
+  hosts: spine1
+  connection: netconf
+  gather_facts: no
+
+  tasks:
+  - name: "Create a vlan entry"
+    netconf_config:
+    host: 10.16.138.15
+    username: admin
+    password: admin
+    hostkey_verify: false
+    xml: |
+        <config>
+           <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces" xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type" xmlns:dell-if="http://www.dellemc.com/networking/os10/dell-interface" xmlns:dell-eth="http://www.dellemc.com/networking/os10/dell-ethernet" xmlns:dell-lag="http://www.dellemc.com/networking/os10/dell-lag" xmlns:dell-lacp="http://www.dellemc.com/networking/os10/dell-lacp">
+             <interface>
+               <type>ianaift:l2vlan</type>
+               <name>vlan106</name>
+             </interface>
+           </interfaces>
+         </config>
+
+4. Run the playbook
+
+::
+
+    ansible-playbook -i inventory.yaml create_vlan.yaml
+
+
 Run Dell EMC Networking Ansible examples
 ****************************************
 
@@ -126,6 +176,46 @@ dellos10_config module that configures the hostname on the OS10 device example
 ::
 
     ansible-playbook -vvv -i inventory.yaml hostname_os10.yaml
+
+Run Openswitch OPX Ansible example
+***********************************
+
+Use the below example to configure VLAN using CPS operations.
+
+1. Create an inventory file called *inventory.yaml* and specify the IP address.
+
+::
+
+    spine1 ansible_host=10.11.182.16
+
+2. Create a host variable file called *host_vars/spine1.yaml* then define the host, credentials, and transport.
+
+::
+
+    hostname: spine1
+    ansible_ssh_user: xxxxx
+    ansible_ssh_pass: xxxxx
+
+3. Create a file called *create_vlan.yaml* then define the cps operations.
+
+::
+  
+  - hosts: opx_cps
+    tasks:
+      - name: Create vlan
+        opx_cps:
+          module_name: "dell-base-if-cmn/if/interfaces/interface" 
+          attr_data: "{{ attr_vlan }}"
+          operation: "create" 
+        environment:
+          PYTHONPATH: "/usr/lib/opx:/usr/lib/x86_64-linux-gnu/opx"
+          LD_LIBRARY_PATH: "/usr/lib/opx:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib:/lib"
+
+4. Run the playbook
+
+::
+
+    ansible-playbook -i inventory.yaml create_vlan.yaml
 
 Playbook using Ansible roles example
 ************************************
