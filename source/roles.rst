@@ -9,7 +9,7 @@ AAA role
 
 The `dellos-aaa <https://galaxy.ansible.com/Dell-Networking/dellos-aaa/>`_ role facilitates the configuration of authentication authorization acccounting (AAA), and supports the configuration of TACACS and RADIUS server and AAA.
 
-Abstracted for ``OS6`` ``OS10``
+Abstracted for ``OS6`` ``OS9``
 
 ACL role
 --------
