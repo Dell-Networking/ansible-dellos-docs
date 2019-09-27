@@ -207,11 +207,11 @@ TEMPLATE role
 
 The `dellos-template <https://github.com/Dell-Networking/ansible-role-dellos-template/>`_ This role facilitates the TEXTFSM parsing engine. TextFSM is a template based state machine . It takes the raw string input from the CLI of network devices  dellos10 , run them through a TEXTFSM template and return structured text in the form of a Python dictionary.
 
-Abstractied for ``OS10``
+Abstracted for ``OS10``
 
 UPLINK role
 -----------
 
 The `dellos-uplink <https://galaxy.ansible.com/Dell-Networking/ansible_role_dellos_uplink/>`_ This role facilitates the configuration of uplink attributes, and is abstracted for dellos10. It specifically enables configuration of  association between upstream and downstream interfaces known as uplink-state group.
 
-Abstractied for ``OS10``
+Abstracted for ``OS10``
