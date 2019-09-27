@@ -9,14 +9,14 @@ AAA role
 
 The `dellos-aaa <https://galaxy.ansible.com/Dell-Networking/dellos-aaa/>`_ role facilitates the configuration of authentication authorization acccounting (AAA), and supports the configuration of TACACS and RADIUS server and AAA.
 
-Abstracted for ``OS9``
+Abstracted for ``OS6`` ``OS10``
 
 ACL role
 --------
 
 The `dellos-acl <https://galaxy.ansible.com/Dell-Networking/dellos-acl/>`_ role facilitates the configuration of an access control list (ACL). It supports the configuration of different types of ACLs (standard and extended) for both IPv4 and IPv6, and assigns the access-class to line terminals.
 
-Abstracted for ``OS9``
+Abstracted for ``OS6`` ``OS9``
 
 BGP role
 --------
@@ -88,7 +88,7 @@ LLDP role
 
 The `dellos-lldp <https://galaxy.ansible.com/Dell-Networking/dellos-lldp/>`_ role facilitates the configuration of link layer discovery protocol (LLDP) attributes at global and interface level. This role supports the configuration of hello, mode, multiplier, advertise tlvs, management interface, fcoe, iscsi at global and interface levels.
 
-Abstracted for ``OS9`` ``OS10``
+Abstracted for ``OS6`` ``OS9`` ``OS10``
 
 Logging role
 ------------
@@ -116,7 +116,7 @@ QoS role
 
 The `dellos-qos <https://galaxy.ansible.com/Dell-Networking/dellos-qos/>`_ role facilitates the configuration of quality of service attributes including policy-map and class-map.
 
-Abstracted for ``OS10``
+Abstracted for ``OS6`` ``OS10``
 
 Route-map role
 --------------
@@ -187,3 +187,31 @@ xSTP role
 The `dellos-xstp <https://galaxy.ansible.com/Dell-Networking/dellos-xstp/>`_ role facilitates the configuration of xSTP attributes. This role supports multiple version of spanning-tree protocol (STP), rapid spanning-tree (RSTP) protocol, multiple spanning-tree (MST), and per-VLAN spanning-tree (PVST). This role supports the configuration of bridge priority, enabling and disabling spanning-tree, creating and deleting instances, and mapping virtual LAN (VLAN) to instances.
 
 Abstracted for ``OS6`` ``OS9`` ``OS10``
+
+VXLAN role
+----------
+
+The `dellos-vxlan <https://galaxy.ansible.com/Dell-Networking/ansible_role_dellos_vxlan/>`_ role facilitates the configuration of  virtual extensible LAN (VXLAN)   attributes. It supports the configuration of Virtual Networks, Ethernet Virtual Private Network (evpn) and Network Virtualization Edge (nve).
+
+Abstracted for ``OS10``
+
+BFD role
+--------
+
+The `dellos-bfd <https://galaxy.ansible.com/Dell-Networking/ansible_role_dellos_bfd/>`_ This role facilitates the configuration of BFD global attributes, and is abstracted for dellos10. It specifically enables configuration of bfd interval , min_rx, multiplier and role.
+
+Abstracted for ``OS10``
+
+TEMPLATE role
+-------------
+
+The `dellos-template <https://github.com/Dell-Networking/ansible-role-dellos-template/>`_ This role facilitates the TEXTFSM parsing engine. TextFSM is a template based state machine . It takes the raw string input from the CLI of network devices  dellos10 , run them through a TEXTFSM template and return structured text in the form of a Python dictionary.
+
+Abstractied for ``OS10``
+
+UPLINK role
+-----------
+
+The `dellos-uplink <https://galaxy.ansible.com/Dell-Networking/ansible_role_dellos_uplink/>`_ This role facilitates the configuration of uplink attributes, and is abstracted for dellos10. It specifically enables configuration of  association between upstream and downstream interfaces known as uplink-state group.
+
+Abstractied for ``OS10``

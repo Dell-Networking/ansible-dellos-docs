@@ -21,11 +21,6 @@ OS9 modules
 OS10 modules
 ************
 
--  `dellos10_command <https://docs.ansible.com/ansible/dellos10_command_module.html>`_: Run commands on remote devices running Dell EMC Networking OS10
--  `dellos10_config <https://docs.ansible.com/ansible/dellos10_config_module.html>`_: Manage configuration sections on remote devices running Dell EMC Networking OS10
--  `dellos10_facts <https://docs.ansible.com/ansible/dellos10_facts_module.html>`_: Collect facts from remote devices running Dell EMC Networking OS10
-
-OPX module
-************
-
--  `opx_cps <https://docs.ansible.com/ansible/devel/modules/opx_cps_module.html>`_: Manage configuration sections using CPS on remote devices running Dell EMC Networking OS10 
+-  `dellos10_command <https://docs.ansible.com/ansible/dellos10_command_module.html>`_: Run commands on remote devices running Dell EMC SmartFabric OS10
+-  `dellos10_config <https://docs.ansible.com/ansible/dellos10_config_module.html>`_: Manage configuration sections on remote devices running Dell EMC SmartFabric OS10
+-  `dellos10_facts <https://docs.ansible.com/ansible/dellos10_facts_module.html>`_: Collect facts from remote devices running Dell EMC SmartFabric OS10
