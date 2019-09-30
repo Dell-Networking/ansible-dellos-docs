@@ -9,7 +9,7 @@ AAA role
 
 The `dellos-aaa <https://galaxy.ansible.com/Dell-Networking/dellos-aaa/>`_ role facilitates the configuration of authentication authorization acccounting (AAA), and supports the configuration of TACACS and RADIUS server and AAA.
 
-Abstracted for ``OS6`` ``OS9``
+Abstracted for ``OS6`` ``OS9`` ``OS10``
 
 ACL role
 --------
@@ -191,6 +191,27 @@ Abstracted for ``OS6`` ``OS9`` ``OS10``
 VXLAN role
 ----------
 
-The `dellos-vxlan <https://galaxy.ansible.com/Dell-Networking/dellos-vxlan/>`_ role facilitates the configuration of  virtual extensible LAN (VXLAN)   attributes. It supports the configuration of Virtual Networks, Ethernet Virtual Private Network (evpn) and Network Virtualization Edge (nve).
+The `dellos-vxlan <https://galaxy.ansible.com/Dell-Networking/ansible_role_dellos_vxlan/>`_ role facilitates the configuration of  virtual extensible LAN (VXLAN)   attributes. It supports the configuration of Virtual Networks, Ethernet Virtual Private Network (evpn) and Network Virtualization Edge (nve).
+
+Abstracted for ``OS10``
+
+BFD role
+--------
+
+The `dellos-bfd <https://galaxy.ansible.com/Dell-Networking/ansible_role_dellos_bfd/>`_ This role facilitates the configuration of BFD global attributes, and is abstracted for dellos10. It specifically enables configuration of bfd interval , min_rx, multiplier and role.
+
+Abstracted for ``OS10``
+
+TEMPLATE role
+-------------
+
+The `dellos-template <https://github.com/Dell-Networking/ansible-role-dellos-template/>`_ This role facilitates the TEXTFSM parsing engine. TextFSM is a template based state machine . It takes the raw string input from the CLI of network devices  dellos10 , run them through a TEXTFSM template and return structured text in the form of a Python dictionary.
+
+Abstracted for ``OS10``
+
+UPLINK role
+-----------
+
+The `dellos-uplink <https://galaxy.ansible.com/Dell-Networking/ansible_role_dellos_uplink/>`_ This role facilitates the configuration of uplink attributes, and is abstracted for dellos10. It specifically enables configuration of  association between upstream and downstream interfaces known as uplink-state group.
 
 Abstracted for ``OS10``
