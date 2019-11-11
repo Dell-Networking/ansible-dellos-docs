@@ -191,14 +191,14 @@ Abstracted for ``OS6`` ``OS9`` ``OS10``
 VXLAN role
 ----------
 
-The `dellos-vxlan <https://galaxy.ansible.com/Dell-Networking/ansible_role_dellos_vxlan/>`_ role facilitates the configuration of  virtual extensible LAN (VXLAN)   attributes. It supports the configuration of Virtual Networks, Ethernet Virtual Private Network (evpn) and Network Virtualization Edge (nve).
+The `dellos_vxlan <https://galaxy.ansible.com/Dell-Networking/dellos_vxlan/>`_ role facilitates the configuration of  virtual extensible LAN (VXLAN)   attributes. It supports the configuration of Virtual Networks, Ethernet Virtual Private Network (evpn) and Network Virtualization Edge (nve).
 
 Abstracted for ``OS10``
 
 BFD role
 --------
 
-The `dellos-bfd <https://galaxy.ansible.com/Dell-Networking/ansible_role_dellos_bfd/>`_ This role facilitates the configuration of BFD global attributes, and is abstracted for dellos10. It specifically enables configuration of bfd interval , min_rx, multiplier and role.
+The `dellos_bfd <https://galaxy.ansible.com/Dell-Networking/dellos_bfd/>`_ This role facilitates the configuration of BFD global attributes, and is abstracted for dellos10. It specifically enables configuration of bfd interval , min_rx, multiplier and role.
 
 Abstracted for ``OS10``
 
@@ -212,6 +212,6 @@ Abstracted for ``OS10``
 UPLINK role
 -----------
 
-The `dellos-uplink <https://galaxy.ansible.com/Dell-Networking/ansible_role_dellos_uplink/>`_ This role facilitates the configuration of uplink attributes, and is abstracted for dellos10. It specifically enables configuration of  association between upstream and downstream interfaces known as uplink-state group.
+The `dellos_uplink <https://galaxy.ansible.com/Dell-Networking/dellos_uplink/>`_ This role facilitates the configuration of uplink attributes, and is abstracted for dellos10. It specifically enables configuration of  association between upstream and downstream interfaces known as uplink-state group.
 
 Abstracted for ``OS10``
