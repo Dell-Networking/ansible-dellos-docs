@@ -205,7 +205,7 @@ Abstracted for ``OS10``
 TEMPLATE role
 -------------
 
-The `dellos-template <https://github.com/Dell-Networking/ansible-role-dellos-template/>`_ This role facilitates the TEXTFSM parsing engine. TextFSM is a template based state machine . It takes the raw string input from the CLI of network devices  dellos10 , run them through a TEXTFSM template and return structured text in the form of a Python dictionary.
+The `dellos_template <https://galaxy.ansible.com/Dell-Networking/dellos_template/>`_ This role facilitates the TEXTFSM parsing engine. TextFSM is a template based state machine . It takes the raw string input from the CLI of network devices  dellos10 , run them through a TEXTFSM template and return structured text in the form of a Python dictionary.
 
 Abstracted for ``OS10``
 
