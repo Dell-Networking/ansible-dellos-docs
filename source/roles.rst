@@ -215,3 +215,17 @@ UPLINK role
 The `dellos_uplink <https://galaxy.ansible.com/Dell-Networking/dellos_uplink/>`_ This role facilitates the configuration of uplink attributes, and is abstracted for dellos10. It specifically enables configuration of  association between upstream and downstream interfaces known as uplink-state group.
 
 Abstracted for ``OS10``
+
+Fabric-Summary role
+-------------------
+
+The `dellos_fabric_summary <https://galaxy.ansible.com/Dell-Networking/dellos_fabric_summary/>`_ This role facilitates to get show system information of all the switches in the fabric.
+
+Abstractied for ``OS10``
+
+Network-Validation role
+-----------------------
+
+The `dellos_network_validation <https://galaxy.ansible.com/Dell-Networking/dellos_network_validation/>`_ This role facilitates to verify the Networks. It validates networking features of wiring connection, bgp neighbors, MTU between neighbors and VLT pair.
+
+Abstractied for ``OS10``
