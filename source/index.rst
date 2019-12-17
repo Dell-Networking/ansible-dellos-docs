@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Dell EMC Networking Ansible Documentation
+Dell EMC Ansible Documentation
 =========================================
 
 .. toctree::
@@ -13,15 +13,15 @@ Dell EMC Networking Ansible Documentation
 
    Introduction <intro>
    Installation <install>
-   Dell EMC Networking Ansible Modules <modules> 
-   Dell EMC Networking Ansible Roles <roles> 
+   Dell EMC Ansible Modules <modules> 
+   Dell EMC Ansible Roles <roles> 
    Support Matrix <support_matrix>
    Examples <examples>
    CLOS Fabric Example <clos_fabric_example>
    Hot Swap Example <hot_swap_example>
-   Image upgrade Example <image_upgrade_example>
+   Image Upgrade Example <image_upgrade_example>
    ZTD Example <ztd_example>
-   Smart Fabric Services Example <smart_fabric_services_example>
+   SmartFabric Services Example <smart_fabric_services_example>
    FAQ <faq>
    Release Notes <releasenotes>
    Support <support>

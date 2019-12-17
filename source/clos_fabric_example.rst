@@ -1,22 +1,22 @@
 =======================================================================
-Provision CLOS fabric using Dell EMC Networking Ansible modules example
+Provision CLOS fabric using Dell EMC Ansible modules example
 =======================================================================
 
-This example describes how to use Ansible to build a CLOS fabric with Dell EMC Networking OS10 switches. The sample topology is a two-tier CLOS fabric with two spines and four leafs connected as mesh. EBGP is running between the two tiers.
+This example describes how to use Ansible to build a CLOS fabric with Dell EMC SmartFabric OS10 switches. The sample topology is a two-tier CLOS fabric with two spines and four leafs connected as mesh. eBGP is running between the two tiers. All switches in spine have the same AS number, and each leaf switch has a unique AS number. All AS numbers used are private. 
 
-All switches in spine have the same AS number, and each leaf switch has a unique AS number. All AS number used are private. For application load-balancing purposes, the same prefix is advertised from multiple leaf switches and uses *BGP multipath relax* feature.
+For application load-balancing purposes, the same prefix is advertised from multiple leaf switches and uses *BGP multipath relax* feature.
 
 
 .. figure:: ./_static/topo.png
    :scale: 50 %
    :alt: map to buried treasure
 
-Creating a Simple Ansible Playbook
+Create a simple Ansible playbook
 ----------------------------------
 
 **Step 1**
 
-Create an inventory file called ``inventory.yaml`` and specify the device IP address:
+Create an inventory file called ``inventory.yaml``, then specify the device IP address.
 
 
 ::
@@ -45,7 +45,115 @@ Create an inventory file called ``inventory.yaml`` and specify the device IP add
 
 **Step 2**
 
-Create a host variable file called ``host_vars/spine1.yaml``, then define the host, credentials and transport:
+Create a group variable file called ``group_vars/all``, then define credentials and SNMP variables.
+
+::
+
+     ansible_ssh_user: xxxxx
+     ansible_ssh_pass: xxxxx
+     ansible_network_os: dellos10
+
+     dellos_snmp:
+       snmp_community:
+         - name: public
+           access_mode: ro
+           state: present
+
+**Step 3**
+
+Create a group variable file called ``group_vars/spine.yaml``, then define credentials, hostname, and BGP neighbors of spine group.
+
+::
+
+     ansible_ssh_user: xxxxx
+     ansible_ssh_pass: xxxxx
+     ansible_network_os: dellos10
+
+     dellos_system:
+       hostname: "{{ spine_hostname }}"
+
+     dellos_bgp:
+        asn: 64901
+        router_id: "{{ bgp_router_id }}"
+        best_path:
+           as_path: multipath-relax
+           as_path_state: present
+           med:
+            - attribute: missing-as-worst
+              state: present
+        neighbor:
+          - type: ipv4
+            remote_asn: "{{ bgp_neigh1_remote_asn }}"
+            ip: "{{ bgp_neigh1_ip }}"
+            admin: up
+            state: present
+          - type: ipv4
+            remote_asn: "{{ bgp_neigh2_remote_asn }}"
+            ip: "{{ bgp_neigh2_ip }}"
+            admin: up
+            state: present
+          - type: ipv4
+            remote_asn: "{{ bgp_neigh3_remote_asn }}"
+            ip: "{{ bgp_neigh3_ip }}"
+            admin: up
+            state: present
+          - type: ipv4
+            remote_asn: "{{ bgp_neigh4_remote_asn }}"
+            ip: "{{ bgp_neigh4_ip }}"
+            admin: up
+            state: present        
+          - type: ipv6
+            remote_asn: "{{ bgp_neigh5_remote_asn }}"
+            ip: "{{ bgp_neigh5_ip }}"
+            admin: up
+            address_family:
+              - type: ipv4
+                activate: false
+                state: present
+              - type: ipv6
+                activate: true
+                state: present   
+            state: present
+          - type: ipv6
+            remote_asn: "{{ bgp_neigh6_remote_asn }}"
+            ip: "{{ bgp_neigh6_ip }}"
+            admin: up
+            address_family:
+              - type: ipv4
+                activate: false
+                state: present
+              - type: ipv6
+                activate: true
+                state: present   
+            state: present
+          - type: ipv6
+            remote_asn: "{{ bgp_neigh7_remote_asn }}"
+            ip: "{{ bgp_neigh7_ip }}"
+            admin: up
+            address_family:
+              - type: ipv4
+                activate: false
+                state: present
+              - type: ipv6
+                activate: true
+                state: present   
+            state: present
+          - type: ipv6
+            remote_asn: "{{ bgp_neigh8_remote_asn }}"
+            ip: "{{ bgp_neigh8_ip }}"
+            admin: up
+            address_family:
+              - type: ipv4
+                activate: false
+                state: present
+              - type: ipv6
+                activate: true
+                state: present   
+        state: present
+    
+**Step 4**
+
+Create a host variable file called ``host_vars/spine1.yaml``, then define the host, credentials, and transport.
     
 :: 
     
@@ -53,6 +161,8 @@ Create a host variable file called ``host_vars/spine1.yaml``, then define the ho
     ansible_ssh_user: xxxxx
     ansible_ssh_pass: xxxxx
     ansible_network_os: dellos10
+    spine_hostname: "spine-1"
+    
     dellos_interface:
         ethernet 1/1/1:
                 desc: "Connected to leaf 1"
@@ -90,90 +200,27 @@ Create a host variable file called ``host_vars/spine1.yaml``, then define the ho
                 ip_and_mask: 100.1.49.1/24
                 ipv6_and_mask: 2001:100:1:31::1/64
                 state_ipv6: present            
-    dellos_bgp:
-        asn: 64901
-        router_id: 100.0.1.1
-        best_path:
-           as_path: multipath-relax
-           as_path_state: present
-           med:
-            - attribute: missing-as-worst
-              state: present
-        neighbor:
-          - type: ipv4
-            remote_asn: 64801
-            ip: 100.1.1.2
-            admin: up
-            state: present
-          - type: ipv4
-            remote_asn: 64803
-            ip: 100.1.33.2
-            admin: up
-            state: present
-          - type: ipv4
-            remote_asn: 64802
-            ip: 100.1.17.2
-            admin: up
-            state: present
-          - type: ipv4
-            remote_asn: 64804
-            ip: 100.1.49.2
-            admin: up
-            state: present        
-          - type: ipv6
-            remote_asn: 64801
-            ip: 2001:100:1:1::2
-            admin: up
-            address_family:
-              - type: ipv4
-                activate: false
-                state: present
-              - type: ipv6
-                activate: true
-                state: present   
-            state: present
-          - type: ipv6
-            remote_asn: 64802
-            ip: 2001:100:1:11::2
-            admin: up
-            address_family:
-              - type: ipv4
-                activate: false
-                state: present
-              - type: ipv6
-                activate: true
-                state: present   
-            state: present
-          - type: ipv6
-            remote_asn: 64803
-            ip: 2001:100:1:21::2
-            admin: up
-            address_family:
-              - type: ipv4
-                activate: false
-                state: present
-              - type: ipv6
-                activate: true
-                state: present   
-            state: present
-          - type: ipv6
-            remote_asn: 64804
-            ip: 2001:100:1:31::2
-            admin: up
-            address_family:
-              - type: ipv4
-                activate: false
-                state: present
-              - type: ipv6
-                activate: true
-                state: present   
-        state: present
-    dellos_snmp:
-        snmp_community:
-          - name: public
-            access_mode: ro
-            state: present
 
+    bgp_router_id: "100.0.1.1" 
+    bgp_neigh1_remote_asn: 64801
+    bgp_neigh1_ip: "100.1.1.2"
+    bgp_neigh2_remote_asn: 64803
+    bgp_neigh2_ip: "100.1.33.2"
+    bgp_neigh3_remote_asn: 64802
+    bgp_neigh3_ip: "100.1.17.2"
+    bgp_neigh4_remote_asn: 64804
+    bgp_neigh4_ip: "100.1.49.2"
+    bgp_neigh5_remote_asn: 64801
+    bgp_neigh5_ip: "2001:100:1:1::2"
+    bgp_neigh6_remote_asn: 64802
+    bgp_neigh6_ip: "2001:100:1:11::2"
+    bgp_neigh7_remote_asn: 64803
+    bgp_neigh7_ip: "2001:100:1:21::2"
+    bgp_neigh8_remote_asn: 64804
+    bgp_neigh8_ip: "2001:100:1:31::2"
+
+
+Create a host variable file called ``host_vars/spine2.yaml``, then define the host, credentials, and transport.
             
 :: 
 
@@ -181,6 +228,7 @@ Create a host variable file called ``host_vars/spine1.yaml``, then define the ho
     ansible_ssh_user: xxxxx
     ansible_ssh_pass: xxxxx
     ansible_network_os: dellos10
+    spine_hostname: "spine-2"
     dellos_interface:
         ethernet 1/1/1:
                 desc: "Connected to leaf 1" 
@@ -217,91 +265,27 @@ Create a host variable file called ``host_vars/spine1.yaml``, then define the ho
                 switchport: False
                 ip_and_mask: 100.2.49.1/24
                 ipv6_and_mask: 2001:100:2:31::1/64
-                state_ipv6: present            
-    dellos_bgp:
-        asn: 64901
-        router_id: 100.0.1.2
-        best_path:
-           as_path: multipath-relax
-           as_path_state: present
-           med:
-            - attribute: missing-as-worst
-              state: present
-        neighbor:
-          - type: ipv4
-            remote_asn: 64801
-            ip: 100.2.1.2
-            admin: up
-            state: present
-          - type: ipv4
-            remote_asn: 64802
-            ip: 100.2.33.2
-            admin: up
-            state: present
-          - type: ipv4
-            remote_asn: 64803
-            ip: 100.2.17.2
-            admin: up
-            state: present
-          - type: ipv4
-            remote_asn: 64804
-            ip: 100.2.49.2
-            admin: up
-            state: present        
-      - type: ipv6
-        remote_asn: 64801
-        ip: 2001:100:2:1::2
-        admin: up
-        address_family:
-          - type: ipv4
-            activate: false
-            state: present
-          - type: ipv6
-            activate: true
-            state: present   
-        state: present
-          - type: ipv6
-            remote_asn: 64802
-            ip: 2001:100:2:11::2
-            admin: up
-            address_family:
-              - type: ipv4
-                activate: false
-                state: present
-              - type: ipv6
-                activate: true
-                state: present   
-            state: present
-          - type: ipv6
-            remote_asn: 64803
-            ip: 2001:100:2:21::2
-            admin: up
-            address_family:
-              - type: ipv4
-                activate: false
-                state: present
-              - type: ipv6
-                activate: true
-                state: present   
-            state: present
-          - type: ipv6
-            remote_asn: 64804
-            ip: 2001:100:2:31::2
-            admin: up
-            address_family:
-              - type: ipv4
-                activate: false
-                state: present
-              - type: ipv6
-                activate: true
-                state: present   
-            state: present        
-        state: present
-    dellos_snmp:
-        snmp_community:
-          - name: public
-            access_mode: ro
-            state: present
+                state_ipv6: present
+            
+    bgp_router_id: "100.0.1.2"
+    bgp_neigh1_remote_asn: 64801
+    bgp_neigh1_ip: "100.2.1.2"
+    bgp_neigh2_remote_asn: 64802
+    bgp_neigh2_ip: "100.2.33.2"
+    bgp_neigh3_remote_asn: 64803
+    bgp_neigh3_ip: "100.2.17.2"
+    bgp_neigh4_remote_asn: 64804
+    bgp_neigh4_ip: "100.2.49.2"
+    bgp_neigh5_remote_asn: 64801
+    bgp_neigh5_ip: "2001:100:2:1::2"
+    bgp_neigh6_remote_asn: 64802
+    bgp_neigh6_ip: "2001:100:2:11::2"
+    bgp_neigh7_remote_asn: 64803
+    bgp_neigh7_ip: "2001:100:2:21::2"
+    bgp_neigh8_remote_asn: 64804
+    bgp_neigh8_ip: "2001:100:2:31::2"
+
+Create a host variable file called ``host_vars/leaf1.yaml``, then define the host, credentials, and transport.
 
 :: 
 
@@ -381,11 +365,8 @@ Create a host variable file called ``host_vars/spine1.yaml``, then define the ho
                 state: present   
             state: present
         state: present
-    dellos_snmp:
-        snmp_community:
-          - name: public
-            access_mode: ro
-            state: present
+
+Create a host variable file called ``host_vars/leaf2.yaml``, then define the host, credentials, and transport.
 
 :: 
 
@@ -468,11 +449,6 @@ Create a host variable file called ``host_vars/spine1.yaml``, then define the ho
                 activate: true
                 state: present          
         state: present
-    dellos_snmp:
-        snmp_community:
-          - name: public
-            access_mode: ro
-            state: present
             
 :: 
 
@@ -555,11 +531,8 @@ Create a host variable file called ``host_vars/spine1.yaml``, then define the ho
                 activate: true
                 state: present         
         state: present
-    dellos_snmp:
-        snmp_community:
-          - name: public
-            access_mode: ro
-            state: present
+
+Create a host variable file called ``host_vars/leaf4.yaml``, then define the host, credentials, and transport.
 
 :: 
 
@@ -638,15 +611,10 @@ Create a host variable file called ``host_vars/spine1.yaml``, then define the ho
                 activate: true
                 state: present 
         state: present
-    dellos_snmp:
-        snmp_community:
-          - name: public
-            access_mode: ro
-            state: present
 	  
-**Step 3**
+**Step 5**
 
-Create a playbook called ``datacenter.yaml``:
+Create a playbook called ``datacenter.yaml``.
 
 :: 
 
@@ -658,10 +626,10 @@ Create a playbook called ``datacenter.yaml``:
 		- Dell-Networking.dellos-interface
 		- Dell-Networking.dellos-bgp
 		- Dell-Networking.dellos-snmp
+                - Dell-Networking.dellos-system
 
-**Step 4**
+**Step 6**
 
-Execute the playbook:
+Run the playbook.
 
 ``ansible-playbook -i inventory.yaml datacenter.yaml``
-

@@ -1,15 +1,15 @@
 ################################# 
-Dell EMC Networking Ansible roles
+Dell EMC Ansible roles
 #################################
 
-The Dell EMC Networking Ansible roles facilitate device provisioning running Dell EMC Networking OS6, OS9, or OS10. This information describes the Dell EMC Networking Ansible roles.
+The Dell EMC Ansible roles facilitate device provisioning running Dell EMC OS6, OS9, or OS10. This information describes the Dell EMC Ansible roles.
 
 AAA role
 --------
 
 The `dellos-aaa <https://galaxy.ansible.com/Dell-Networking/dellos-aaa/>`_ role facilitates the configuration of authentication authorization acccounting (AAA), and supports the configuration of TACACS and RADIUS server and AAA.
 
-Abstracted for ``OS6`` ``OS9`` ``OS10``
+Abstracted for ``OS6`` ``OS10``
 
 ACL role
 --------
@@ -30,6 +30,7 @@ Copy-config role
 ----------------
 
 The `dellos-copy-config <https://galaxy.ansible.com/Dell-Networking/dellos-copy-config/>`_ role pushes the backup running configuration into a device. This role merges the configuration in the template file with the running configuration of the Dell EMC Networking device.
+
 
 Abstracted for ``OS6`` ``OS9`` ``OS10``
 
@@ -57,7 +58,7 @@ Abstracted for ``OS9``
 Flow-monitor role
 -----------------
 
-The `dellos-flow-monitor <https://galaxy.ansible.com/Dell-Networking/dellos-flow-monitor/>`_ role facilitates the configuration of ACL flow-based monitoring attributes. Flow-based mirroring is a mirroring session in which traffic matches specified policies that are mirrored to a destination port. Port-based mirroring maintains a database that contains all monitoring sessions (including port monitor sessions).
+The `dellos-flow-monitor <https://galaxy.ansible.com/Dell-Networking/dellos-flow-monitor/>`_ role facilitates the configuration of ACL flow-based monitoring attributes. Flow-based mirroring is a mirroring session in which traffic matches specified policies that are mirrored to a destination port. Port-based mirroring maintains a database that contains all monitoring sessions, including port monitor sessions.
 
 Abstracted for ``OS10``
 
@@ -128,7 +129,7 @@ Abstracted for ``OS10``
 sFlow role
 ----------
 
-The `dellos-sflow <https://galaxy.ansible.com/Dell-Networking/dellos-sflow/>`_ role facilitates the configuration of global and interface-level sflow attributes. This role supports the configuration of sflow collectors at the global level, enabling and disabling of sflow and specification of sflow polling-interval, sample-rate, max-datagram sizs, and so on are supported at interface and global levels.
+The `dellos-sflow <https://galaxy.ansible.com/Dell-Networking/dellos-sflow/>`_ role facilitates the configuration of global and interface-level sflow attributes. This role supports the configuration of sflow collectors at the global level, enabling and disabling of sFlow and specification of sFlow polling-interval, sample-rate, max-datagram sizes, and so on are supported at interface and global levels.
 
 Abstracted for ``OS9``
 
@@ -177,7 +178,7 @@ Abstracted for ``OS9``
 VRRP role
 ---------
 
-The `dellos-vrrp <https://galaxy.ansible.com/Dell-Networking/dellos-vrrp/>`_ role facilitates configuration of virtual router redundancy protocol (VRRP) attributes. This role supports the creation of vrrp groups for interfaces, and setting the vrrp group attributes.
+The `dellos-vrrp <https://galaxy.ansible.com/Dell-Networking/dellos-vrrp/>`_ role facilitates configuration of virtual router redundancy protocol (VRRP) attributes. This role supports the creation of VRRP groups for interfaces, and setting the VRRP group attributes.
 
 Abstracted for ``OS6`` ``OS9`` ``OS10``
 
@@ -191,41 +192,41 @@ Abstracted for ``OS6`` ``OS9`` ``OS10``
 VXLAN role
 ----------
 
-The `dellos_vxlan <https://galaxy.ansible.com/Dell-Networking/dellos_vxlan/>`_ role facilitates the configuration of  virtual extensible LAN (VXLAN)   attributes. It supports the configuration of Virtual Networks, Ethernet Virtual Private Network (evpn) and Network Virtualization Edge (nve).
+The `dellos-vxlan <https://galaxy.ansible.com/Dell-Networking/ansible_role_dellos_vxlan/>`_ role facilitates the configuration of  virtual extensible LAN (VXLAN)   attributes. It supports the configuration of virtual networks, Ethernet virtual private network (EVPN), and network virtualization edge (NVE).
 
 Abstracted for ``OS10``
 
 BFD role
 --------
 
-The `dellos_bfd <https://galaxy.ansible.com/Dell-Networking/dellos_bfd/>`_ This role facilitates the configuration of BFD global attributes, and is abstracted for dellos10. It specifically enables configuration of bfd interval , min_rx, multiplier and role.
+The `dellos-bfd <https://galaxy.ansible.com/Dell-Networking/ansible_role_dellos_bfd/>`_ This role facilitates the configuration of BFD global attributes, and is abstracted for dellos10. It specifically enables configuration of BFD interval , min_rx, multiplier, and role.
 
 Abstracted for ``OS10``
 
 TEMPLATE role
 -------------
 
-The `dellos_template <https://galaxy.ansible.com/Dell-Networking/dellos_template/>`_ This role facilitates the TEXTFSM parsing engine. TextFSM is a template based state machine . It takes the raw string input from the CLI of network devices  dellos10 , run them through a TEXTFSM template and return structured text in the form of a Python dictionary.
+The `dellos-template <https://github.com/Dell-Networking/ansible-role-dellos-template/>`_ This role facilitates the TEXTFSM parsing engine. TextFSM is a template based state machine . It takes the raw string input from the CLI of network devices  dellos10 , run them through a TEXTFSM template and return structured text in the form of a Python dictionary.
 
 Abstracted for ``OS10``
 
 UPLINK role
 -----------
 
-The `dellos_uplink <https://galaxy.ansible.com/Dell-Networking/dellos_uplink/>`_ This role facilitates the configuration of uplink attributes, and is abstracted for dellos10. It specifically enables configuration of  association between upstream and downstream interfaces known as uplink-state group.
+The `dellos-uplink <https://galaxy.ansible.com/Dell-Networking/ansible_role_dellos_uplink/>`_ This role facilitates the configuration of uplink attributes, and is abstracted for dellos10. It specifically enables configuration of  association between upstream and downstream interfaces known as uplink-state group.
 
 Abstracted for ``OS10``
 
 Fabric-Summary role
 -------------------
 
-The `dellos_fabric_summary <https://galaxy.ansible.com/Dell-Networking/dellos_fabric_summary/>`_ This role facilitates to get show system information of all the switches in the fabric.
+The `dellos_fabric_summary <https://galaxy.ansible.com/Dell-Networking/dellos_fabric_summary/>`_ This role facilitates to get show system information of all the switches in the fabric. 
 
-Abstractied for ``OS10``
+Abstracted for ``OS10``
 
 Network-Validation role
 -----------------------
 
-The `dellos_network_validation <https://galaxy.ansible.com/Dell-Networking/dellos_network_validation/>`_ This role facilitates to verify the Networks. It validates networking features of wiring connection, bgp neighbors, MTU between neighbors and VLT pair.
+The `dellos_network_validation <https://galaxy.ansible.com/Dell-Networking/dellos_network_validation/>`_ This role facilitates to verify the Networks. It validates networking features of wiring connection, BGP neighbors, MTU between neighbors and VLT pair. 
 
-Abstractied for ``OS10``
+Abstracted for ``OS10``

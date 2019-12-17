@@ -1,8 +1,8 @@
 ========================================================================
-Provisioning hot swap use case using Dell EMC Networking Ansible modules
+Provisioning hot swap use case using Dell EMC Ansible modules
 ========================================================================
 
-This example use case topology includes a simple two-tier CLOS fabric with 2 spines and 4 leafs. These steps will show how you Spine 2 will be hot swapped without traffic loss.
+This example use case topology includes a simple two-tier CLOS fabric with two spines and four leafs. These steps show how you Spine 2 can be hot swapped without traffic loss.
 
 .. figure:: ./_static/topo.png
    :scale: 50 %
@@ -11,16 +11,18 @@ This example use case topology includes a simple two-tier CLOS fabric with 2 spi
 Create simple Ansible playbook
 ------------------------------
 
-- Part 1 - covers creating an inventory file and host variable file for spine2, creating a pre-step hot swap playbook, then running the playbook
-- Part 2 - covers creating an inventory file and host variable file for each leaf (4), creating a playbook to delete the ecmp path for spine2 from each leaf, then running the playbook
-- Part 3 - covers replacing spine2 with a new switch, booting an OS10 image, creating inventory and host variable files for the new spine2, creating a post hot swap playbook, then running the playbook
+- **Part 1** — Covers creating an inventory file and host variable file for spine2, creating a pre-step hot swap playbook, then running the playbook
+- **Part 2** — Covers creating an inventory file and host variable file for each leaf (four), creating a playbook to delete the ECMP path for spine2 from each leaf, then running the playbook
+- **Part 3** — Covers replacing spine2 with a new switch, booting an OS10 image, creating inventory and host variable files for the new spine2, creating a post hot swap playbook, then running the playbook
 
 Part 1
-~~~~~~
+------
 
-Refer to the CLOS fabric example to configure a 6 node CLOS fabric with EBGP. Use the example and run the playbook. 
+See the CLOS fabric example to configure a six-node CLOS fabric with eBGP. Use the example and run the playbook. 
 
-Create an inventory file called *inventory.yaml*, then specify the device IP address for spine2.
+**Step 1**
+
+Create an inventory file called ``inventory.yaml``, then specify the device IP address for spine2.
 
 ::
 
@@ -33,6 +35,8 @@ Create an inventory file called *inventory.yaml*, then specify the device IP add
 
     [datacenter:children]
     spine
+
+**Step 2**
 
 Create a host variable file called ``host_vars/spine2.yaml``, then define the host and credentials.
 
@@ -98,7 +102,9 @@ Create a host variable file called ``host_vars/spine2.yaml``, then define the ho
             state: present
         state: present
 
-Create a playbook called ``hot_swap_pre_step.yaml``:
+**Step 3**
+
+Create a playbook called ``hot_swap_pre_step.yaml``.
 
 ::
 
@@ -124,16 +130,22 @@ Create a playbook called ``hot_swap_pre_step.yaml``:
     roles:
       - Dell-Networking.dellos-bgp
 
+**Step 4**
+
 Run the playbook.
 
 ``ansible-playbook -i inventory.yaml hot_swap_pre_step.yaml``
 
 Part 2
-~~~~~~
+------
 
-1. After shutting the neighborship in the spine2 switch, check if the ECMP path to spine2 is deleted in each of the leaf switches.
+**Step 1**
 
-Create an inventory file called ``inventory.yaml``, then specify the device IP address of all leaf switches:
+After shutting the neighborship in the spine2 switch, check if the ECMP path to spine2 is deleted in each of the leaf switches.
+
+**Step 2**
+
+Create an inventory file called ``inventory.yaml``, then specify the device IP address of all leaf switches.
 
 ::
 
@@ -153,6 +165,8 @@ Create an inventory file called ``inventory.yaml``, then specify the device IP a
     [datacenter:children]
     leaf
 
+**Step 3**
+
 Create a host variable file called ``host_vars/leaf1.yaml``, then define the host and credentials. The remote_neighbor_ip is the EBGP neighbor IP of spine2 with each of each leaf switch (see the CLOS fabric example for EBGP configuration):
 
 :: 
@@ -165,7 +179,7 @@ Create a host variable file called ``host_vars/leaf1.yaml``, then define the hos
     remote_neighbor_ip: "100.2.1.1"
 
 
-Create a host variable file called ``host_vars/leaf2.yaml``, then define the host and credentials:
+Create a host variable file called ``host_vars/leaf2.yaml``, then define the host and credentials.
 
 ::
 
@@ -177,7 +191,7 @@ Create a host variable file called ``host_vars/leaf2.yaml``, then define the hos
     remote_neighbor_ip: "100.2.17.1"
 
 
-Create a host variable file called ``host_vars/leaf3.yaml``, then define the host and credentials:
+Create a host variable file called ``host_vars/leaf3.yaml``, then define the host and credentials.
 
 :: 
 
@@ -189,7 +203,7 @@ Create a host variable file called ``host_vars/leaf3.yaml``, then define the hos
     remote_neighbor_ip: "100.2.33.1"
 
 
-Create a host variable file called ``host_vars/leaf4.yaml``, then define the host and credentials:
+Create a host variable file called ``host_vars/leaf4.yaml``, then define the host and credentials.
 
 ::
 
@@ -202,9 +216,11 @@ Create a host variable file called ``host_vars/leaf4.yaml``, then define the hos
     remote_neighbor_ip: "100.2.49.1"
 
 
-Create a playbook called ``waitfor_ecmp_path_delete.yaml``
+**Step 4**
 
-.. note:: A debug message will print when the ECMP path for spine2 is deleted in each of the leaf switches.
+Create a playbook called ``waitfor_ecmp_path_delete.yaml``.
+
+    A debug message will print when the ECMP path for spine2 is deleted in each of the leaf switches.
 
 :: 
 
@@ -229,19 +245,25 @@ Create a playbook called ``waitfor_ecmp_path_delete.yaml``
           msg: "{{ hostname }} has deleted the ECMP to spine2 switch"
         when: result.stdout[0] == ""  
 
-#. Execute the playbook.
+**Step 5**
+
+Run the playbook.
 
 ``ansible-playbook -i inventory.yaml waitfor_ecmp_path_delete.yaml``
 
 Part 3
-~~~~~~
+------
 
-1. After checking the spine2 ECMP path deletion in all leaf switches, replace spine2 with a new switch. The new spine2 switch should be connected as the old spine switch after it boots up with an OS10 image.
+**Step 1**
+
+After checking the spine2 ECMP path deletion in all leaf switches, replace spine2 with a new switch. The new spine2 switch should be connected as the old spine switch after it boots up with an OS10 image.
 
     - Manually assign the same spine2 management IP address (for example, 10.16.204.57)
     - Use the Management IP provided by the DHCP server
 
-#. Create an inventory file called *inventory.yaml*, then specify the device IP address for spine2. The device IP can be same spine2 IP or an IP obtained from the DHCP server (x.x.x.x).
+**Step 2**
+
+Create an inventory file called ``inventory.yaml``, then specify the device IP address for spine2. The device IP can be same spine2 IP or an IP obtained from the DHCP server (x.x.x.x).
 
 :: 
 
@@ -256,7 +278,9 @@ Part 3
     spine
 
 
-#. Create a host variable file called *host_vars/spine2.yaml*, then define the host, credentials, and apply the same backup configuration that was saved earlier.
+**Step 3**
+
+Create a host variable file called ``host_vars/spine2.yaml``, then define the host, credentials, and apply the same backup configuration that was saved earlier.
 
 :: 
 
@@ -273,7 +297,9 @@ Part 3
           file_path: /home/linuxadmin/running-config
 
 
-Create a playbook called ``hot_swap_post_step.yaml``
+**Step 4**
+
+Create a playbook called ``hot_swap_post_step.yaml``.
 
 :: 
 
@@ -294,9 +320,10 @@ Create a playbook called ``hot_swap_post_step.yaml``
           with_items: '{{copy_remote_running}}'
 
 
-Execute the playbook:
+**Step 5**
+
+Run the playbook.
 
 ::
 
   ansible-playbook -i inventory.yaml hot_swap_post_step.yaml
-  

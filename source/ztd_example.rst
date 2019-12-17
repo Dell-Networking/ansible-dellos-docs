@@ -1,17 +1,17 @@
 ======================================================================
-Use Ansible to perform ZTD on devices running Dell EMC Networking OS10
+Use Ansible to perform ZTD on devices running Dell EMC SmartFabric OS10
 ======================================================================
 
-This example describes how to use Ansible to perform Zero touch deployment.It installs or upgrades a software image on a
-device running Dell EMC Networking OS10. The example playbook uses the *dellos-image-upgrade* role to upgrade or install an
-OS10 image on a specified switch, followed by a *dellos-copy-config* role to push configs post installation on the device.
-Before using Ansible to install the software image, you must download the software image via FTP/TFTP/SCP/HTTPDS, then spe
-cify the path to the image in the playbook.
+This example describes how to use Ansible to perform zero-touch deployment (ZTP). It installs or upgrades a software image on a device running Dell EMC SmartFabric OS10. 
+
+The example playbook uses the ``dellos-image-upgrade`` role to upgrade or install a SmartFabric OS10 image on a specified switch, followed by a ``dellos-copy-config`` role to push configurations post installation on the device.
+
+Before using Ansible to install the software image, you must download the software image via FTP/TFTP/SCP/HTTPDS, then specify the path to the image in the playbook.
 
 Installation
 ------------
 
-**1**. Set up AWX
+**Step 1  —  Set up AWX**
 
 - Download AWX 4.0.0 release, make sure you have latest ansible version and Install AWX
 
@@ -27,14 +27,14 @@ Installation
     wget https://github.com/ansible/awx/archive/4.0.0.zip # Download the zip file
     unzip 4.0.0.zip # unzip the downloaded file
 
-  Open installer/inventory file and change docker parameters
+  Open installer/inventory file and change Docker parameters.
 
   ::
    
     postgres_data_dir=/var/lib/pgdocker # change from /tmp to /var/lib
     docker_compose_dir=/var/lib/awxcompose # change from /tmp to /var/lib
 
-  Under installer folder, run the following commad.
+  Under installer folder, run the ``install.yml`` command.
 
   ::
   
@@ -42,33 +42,33 @@ Installation
     ansible-playbook -i inventory install.yml -vvv
 
 - Launch AWX in browser
-- Go to Projects and Create AWX project e.g: Name, descriptionand scm type
+- Go to Projects and create AWX project (name, description, and scm type)
 - Create playbook in project directory
-- Go to Inventories and Create inventory and Hostkey
-- Go to template and Create job template
+- Go to Inventories and create inventory and Hostkey
+- Go to template and create job template
 
-**2**. Add curl script to contact an Ansible server
+**Step 2 — Add curl script to contact an Ansible server**
 
-- Go to ztd-provision-url(http://X.X.X.X/ztd.sh) defined in the DHCP server config and include the curl command to the ztd script.
+- Go to ztd-provision-url(http://X.X.X.X/ztd.sh) defined in the DHCP server configuration, and include the curl command to the ztd script.
 
   ::
   
-    e.g: /usr/bin/curl -H "Content-Type:application/json" -k -X POST --data '{"host_config_key":"'7d07e79ebdc8f7c292e495daac0fe16b'"}' -u username:password https://X.X.X.X/api/v2/job_templates/xxx/callback/
+    e.g /usr/bin/curl -H "Content-Type:application/json" -k -X POST --data '{"host_config_key":"'7d07e79ebdc8f7c292e495daac0fe16b'"}' -u username:password https://X.X.X.X/api/v2/job_templates/xxx/callback/
 
-**3**. Run ZTD from device
+**Step 3 — Run ZTD from the SmartFabric OS10 device**
 
 - Run the ZTD by rebooting the switch. Enter the reload ztd command.
 
   ::
   
-    OS10#reload ztd
+    OS10# reload ztd
 
 Example playbook
 ----------------
 
-The *dellos-image-upgrade* role uses the ``dellos10_command`` to install or upgrade the switch, and ``wait_for`` is used to
-identify the progress of the upgrade operation. The *dellos-copy-config* role uses the ``dellos10_config`` module to push
-configs to the device.
+The ``dellos-image-upgrade`` role uses the ``dellos10_command`` to install or upgrade the switch, and ``wait_for`` is used to
+identify the progress of the upgrade operation. The ``dellos-copy-config`` role uses the ``dellos10_config`` module to push
+configurations to the device.
 
   **Sample hosts file**
 
