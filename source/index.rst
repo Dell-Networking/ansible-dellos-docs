@@ -21,7 +21,6 @@ Dell EMC Networking Ansible Documentation
    Hot Swap Example <hot_swap_example>
    Image upgrade Example <image_upgrade_example>
    ZTD Example <ztd_example>
-   Smart Fabric Services Example <smart_fabric_services_example>
    FAQ <faq>
    Release Notes <releasenotes>
    Support <support>
