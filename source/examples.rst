@@ -1,19 +1,23 @@
 ########################################### 
-Dell EMC Networking Ansible module examples
+Dell EMC Ansible module examples
 ###########################################
 
-These module examples explain how to create a simple Ansible playbook, run the Dell EMC Networking Ansible modules, then configure a switch using Ansible roles.
+These module examples explain how to create a simple Ansible playbook, run the Dell EMC Ansible modules, then configure a switch using Ansible roles.
 
 Create simple Ansible playbook
 ******************************
 
-1. Create an inventory file called *inventory.yaml* and specify the IP address.
+**Step 1** 
+
+Create an inventory file called ``inventory.yaml``, then specify the IP address.
 
 ::
 
     spine1 ansible_host=10.11.182.16
 
-2. Create a host variable file called *host_vars/spine1.yaml* then define the host, credentials, and transport.
+**Step 2**
+
+Create a host variable file called ``host_vars/spine1.yaml``, then define the host, credentials, and transport.
 
 ::
 
@@ -26,7 +30,9 @@ Create simple Ansible playbook
     ansible_network_os: xxxxx
 
 
-3. Create a playbook called *showver.yaml*.
+**Step 3**
+
+Create a playbook called ``showver.yaml``.
 
 ::
 
@@ -42,7 +48,9 @@ Create simple Ansible playbook
 
   - debug: var=show_ver
 
-4. Run the playbook
+**Step 4**
+
+Run the playbook.
 
 ::
 
@@ -51,13 +59,17 @@ Create simple Ansible playbook
 Create simple Ansible playbook using connection="netconf"
 *********************************************************
 
-1. Create an inventory file called *inventory.yaml* and specify the IP address.
+**Step 1**
+
+Create an inventory file called ``inventory.yaml``, then specify the IP address.
 
 ::
 
     spine1 ansible_host=10.11.182.16
 
-2. Create a host variable file called *host_vars/spine1.yaml* then define the host, credentials, and transport.
+**Step 2**
+
+Create a host variable file called ``host_vars/spine1.yaml``, then define the host, credentials, and transport.
 
 ::
 
@@ -66,7 +78,9 @@ Create simple Ansible playbook using connection="netconf"
     ansible_ssh_pass: xxxxx
     ansible_network_os: dellos10
 
-3. Create a playbook called *create_vlan.yaml*.
+**Step 3**
+
+Create a playbook called ``create_vlan.yaml``.
 
 ::
 
@@ -91,17 +105,19 @@ Create simple Ansible playbook using connection="netconf"
            </interfaces>
          </config>
 
-4. Run the playbook
+**Step 4**
+
+Run the playbook.
 
 ::
 
     ansible-playbook -i inventory.yaml create_vlan.yaml
 
 
-Run Dell EMC Networking Ansible examples
+Run Dell EMC Ansible examples
 ****************************************
 
-Use these sample Ansible playbooks to understand how to use Dell EMC Networking Ansible modules.
+Use these sample Ansible playbooks to understand how to use Dell EMC Ansible modules.
 
 Installation and setup
 ======================
@@ -110,26 +126,26 @@ Installation and setup
 
 2. Clone the `Ansible-dellos-examples <https://github.com/Dell-Networking/ansible-dellos-examples>`_ repository in the control machine.
 
-3. Update the *inventory.yaml* file to configure the device IP.
+3. Update the ``inventory.yaml`` file to configure the device IP.
 
-4. Update the corresponding host variables (use *hosts_var/dellos10_sw1.yaml* for device credentials).
+4. Update the corresponding host variables; use ``hosts_var/dellos10_sw1.yaml`` for device credentials.
 
 OS6
 ---
 
-dellos6_facts module that collects the facts from the OS6 device example
+dellos6_facts module that collects the facts from the OS6 device example.
 
 ::
 
     ansible-playbook -i inventory.yaml getfacts_os6.yaml
 
-dellos6_command module that executes the show version command example
+dellos6_command module that executes the show version command example.
 
 ::
 
     ansible-playbook -i inventory.yaml showver_os6.yaml
 
-dellos6_config module that configures the hostname on the OS6 device example
+dellos6_config module that configures the hostname on the OS6 device example.
 
 :: 
 
@@ -138,19 +154,19 @@ dellos6_config module that configures the hostname on the OS6 device example
 OS9
 ---
 
-dellos9_facts module that collects the facts from the OS9 device example
+dellos9_facts module that collects the facts from the OS9 device example.
 
 ::
 
     ansible-playbook -i inventory.yaml getfacts_os9.yaml
 
-dellos9_command module that executes the show version command example
+dellos9_command module that executes the show version command example.
 
 ::
 
     ansible-playbook -i inventory.yaml showver_os9.yaml
 
-dellos9_config module that configures the hostname on the OS9 device example
+dellos9_config module that configures the hostname on the OS9 device example.
 
 ::
 
@@ -159,36 +175,40 @@ dellos9_config module that configures the hostname on the OS9 device example
 OS10
 ----
 
-dellos10_facts module that collects the facts from the OS10 device example
+dellos10_facts module that collects the facts from the OS10 device example.
 
 ::
 
     ansible-playbook -i inventory.yaml getfacts_os10.yaml
 
-dellos10_command module that executes the show version command example
+dellos10_command module that executes the show version command example.
 
 ::
 
     ansible-playbook -i inventory.yaml showver_os10.yaml
 
-dellos10_config module that configures the hostname on the OS10 device example
+dellos10_config module that configures the hostname on the OS10 device example.
 
 ::
 
     ansible-playbook -vvv -i inventory.yaml hostname_os10.yaml
 
-Run Openswitch OPX Ansible example
+Run Ansible example
 ***********************************
 
-Use the below example to configure VLAN using CPS operations.
+Use this example to configure VLAN using CPS operations.
 
-1. Create an inventory file called *inventory.yaml* and specify the IP address.
+**Step 1**
+
+Create an inventory file called ``inventory.yaml``, then specify the IP address.
 
 ::
 
     spine1 ansible_host=10.11.182.16
 
-2. Create a host variable file called *host_vars/spine1.yaml* then define the host, credentials, and transport.
+**Step 2**
+
+Create a host variable file called ``host_vars/spine1.yaml``, then define the host, credentials, and transport.
 
 ::
 
@@ -196,7 +216,9 @@ Use the below example to configure VLAN using CPS operations.
     ansible_ssh_user: xxxxx
     ansible_ssh_pass: xxxxx
 
-3. Create a file called *create_vlan.yaml* then define the cps operations.
+**Step 3**
+
+Create a file called ``create_vlan.yaml`, then define the CPS operations.
 
 ::
   
@@ -211,7 +233,9 @@ Use the below example to configure VLAN using CPS operations.
           PYTHONPATH: "/usr/lib/opx:/usr/lib/x86_64-linux-gnu/opx"
           LD_LIBRARY_PATH: "/usr/lib/opx:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib:/lib"
 
-4. Run the playbook
+**Step 4**
+
+Run the playbook.
 
 ::
 
@@ -222,13 +246,17 @@ Playbook using Ansible roles example
 
 Use these examples to configure the switch using Ansible roles.
 
-1. Create an inventory file called *inventory.yaml* and specify the device IP address.
+**Step 1**
+
+Create an inventory file called ``inventory.yaml``, then specify the device IP address.
 
 ::
 
     spine1 ansible_host= <ip_address> 
 
-2. Create a host variable file called *host_vars/spine1.yaml* then define the host, credentials, and transport.
+**Step 2**
+
+Create a host variable file called ``host_vars/spine1.yaml``, then define the host, credentials, and transport.
 
 ::
 
@@ -286,7 +314,9 @@ Use these examples to configure the switch using Ansible roles.
 			  state: present
 		  state: present
 
-3. Create a playbook called *switch_config.yaml*.
+**Step 3**
+
+Create a playbook called ``switch_config.yaml``.
 
 ::
 
@@ -298,7 +328,9 @@ Use these examples to configure the switch using Ansible roles.
 		- Dell-Networking.dellos-interface
 		- Dell-Networking.dellos-vlan
 
-4. Run the playbook.
+**Step 4**
+
+Run the playbook.
 
 ::
 

@@ -1,10 +1,10 @@
 ==========================================================================
-Install or upgrade devices running Dell EMC Networking OS10 using Ansible
+Install or upgrade devices running Dell EMC SmartFabric OS10 using Ansible
 ==========================================================================
 
-This example explains how to use Ansible to install or upgrade the software image on a device running Dell EMC Networking OS10. The example playbook uses the *dellos-image-upgrade* role to upgrade or install an OS10 image on a specified switch. Before using Ansible to install the software image, you must download the software image via FTP/TFTP/SCP/HTTPDS, then specify the path to the image in the playbook. 
+This example explains how to use Ansible to install or upgrade the software image on a device running Dell EMC SmartFabric OS10. The example playbook uses the ``dellos-image-upgrade`` role to upgrade or install a SmartFabric OS10 image on a specified switch. 
 
-The *dellos-image-upgrade* role uses the ``dellos10_command`` to install or upgrade the switch, then and ``wait_for`` is used to identify the progress of the upgrade operation. Validation of the upgrade operation is handled using the ``dellos10_facts`` module.
+Before using Ansible to install the software image, you must download the software image via FTP/TFTP/SCP/HTTPS, then specify the path to the image in the playbook. The ``dellos-image-upgrade`` role uses ``dellos10_command`` to install or upgrade the switch, and ``wait_for`` is used to identify the progress of the upgrade operation. Validation of the upgrade operation is handled using the ``dellos10_facts`` module.
 
 Creating simple Ansible playbook
 --------------------------------
@@ -28,7 +28,7 @@ Create an inventory file called ``inventory.yaml``, then specify the device IP a
 Step 2
 ~~~~~~
 
-Create a host variable file called ``host_vars/spine1.yaml`` then define the host, credentials, and transport:
+Create a host variable file called ``host_vars/spine1.yaml``, then define the host, credentials, and transport:
 
 ::
 
@@ -45,7 +45,7 @@ Create a host variable file called ``host_vars/spine1.yaml`` then define the hos
 Step 3
 ~~~~~~
 
-Create a playbook called ``datacenter.yaml``:
+Create a playbook called ``datacenter.yaml``.
 
 :: 
 
@@ -59,7 +59,9 @@ Create a playbook called ``datacenter.yaml``:
 Step 4
 ~~~~~~
 
-Execute the playbook:
+Run the playbook.
 
-``ansible-playbook -i inventory.yaml datacenter.yaml``
+::
+
+    ansible-playbook -i inventory.yaml datacenter.yaml
 

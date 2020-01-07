@@ -2,9 +2,9 @@
 Support
 #######
 
-You can submit issues for Dell EMC Networking modules at `Ansible Github Issues <https://github.com/ansible/ansible-modules-core/issues>`_.
+You can submit issues for Dell EMC modules at `Ansible Github Issues <https://github.com/ansible/ansible-modules-core/issues>`_.
 
-Submit issues for Dell EMC Networking roles at:
+Submit issues for Dell EMC roles at:
 
 - `dellos-aaa role <https://github.com/Dell-Networking/ansible-role-dellos-aaa/issues>`_
 - `dellos-acl role <https://github.com/Dell-Networking/ansible-role-dellos-acl/issues>`_

@@ -1,8 +1,8 @@
 ###################################################
-Support matrix of Dell EMC Networking Ansible roles
+Support matrix of Dell EMC Ansible roles
 ###################################################
 
-This table shows the support matrix between Ansible roles and Dell EMC Networking OS6, OS9, and OS10.
+This table shows the support matrix between Ansible roles and Dell EMC OS6, OS9, and OS10.
 
 +---------------------+-------------+--------------+-------------+
 | Role                |     OS6     |     OS9      |    OS10     |

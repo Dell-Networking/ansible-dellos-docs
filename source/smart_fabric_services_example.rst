@@ -1,19 +1,18 @@
 ==================================================================================
-Provision SMART FABRIC SERVICES using Dell EMC Networking Ansible modules example
+Provision SmartFabric Services using Dell EMC Ansible modules example
 ==================================================================================
-This example describes how to use Ansible to build a SMART FABRIC CLUSTER and provision the SMART FABRIC SERVICES with Dell EMC Networking OS10 switches.
 
-The sample topology is build with one spine and two leafs connected as mesh. BGP is running between the leafs. VLTi is configured between leafs. 
+This example describes how to use Ansible to build a SmartFabric cluster and provision SFS with Dell EMC SmartFabric OS10 switches. The sample topology is built with one spine and two leafs connected as mesh, with BGP running between the leafs. VLTi is configured between the leafs. 
 
-It also describes to facilitates the configuration of smart fabric and provisioning its attributes through RESTful APIs. 
+The module example also describes the configuration of SFS and provisioning of attributes through REST APIs. 
 
 
-Creating a Ansible Playbook for SMART FABRIC Setup
+Create an Ansible playbook for SmartFabric setup
 ---------------------------------------------------
 
 **Step 1**
 
-Create an inventory file called ``hosts.yaml`` and specify the device IP address and python_interpreter:
+Create an inventory file called ``hosts.yaml`` and specify the device IP address and python_interpreter.
 
 
 ::
@@ -37,7 +36,7 @@ Create an inventory file called ``hosts.yaml`` and specify the device IP address
 
 **Step 2**
 
-Create a host variable file called ``host_vars/leaf1.yaml``, then define the host, credentials and sfs fabric cluster setup input:
+Create a host variable file called ``host_vars/leaf1.yaml``, then define the host, credentials, and SFS fabric cluster setup input.
 
 :: 
     
@@ -54,7 +53,7 @@ Create a host variable file called ``host_vars/leaf1.yaml``, then define the hos
 
 
 
-Create a host variable file called ``host_vars/leaf2.yaml``, then define the host, credentials and sfs fabric cluster setup input:
+Create a host variable file called ``host_vars/leaf2.yaml``, then define the host, credentials, and SFS fabric cluster setup input.
 
 :: 
     
@@ -70,7 +69,7 @@ Create a host variable file called ``host_vars/leaf2.yaml``, then define the hos
         icl_ports: ["ethernet1/1/5","ethernet1/1/6"]
 
 
-Create a host variable file called ``host_vars/spine1.yaml``, then define the host, credentials and sfs fabric cluster setup input:
+Create a host variable file called ``host_vars/spine1.yaml``, then define the host, credentials, and SFS fabric cluster setup input.
 
 :: 
     
@@ -88,7 +87,7 @@ Create a host variable file called ``host_vars/spine1.yaml``, then define the ho
 
 **Step 3**
 
-Create a playbook called ``sfs_setup.yml``:
+Create a playbook called ``sfs_setup.yml``.
 
 :: 
 
@@ -103,19 +102,17 @@ Create a playbook called ``sfs_setup.yml``:
 
 **Step 4**
 
-Execute the playbook:
+Run the playbook.
 
 ``ansible-playbook -i hosts.yaml sfs_setup.yml``
 
 
-Creating an Ansible Playbook for SMART FABRIC API Services 
+Create an Ansible playbook for SmartFabric API services 
 -----------------------------------------------------------
 
 **Step 1**
 
-Use the same inventory ``hosts.yaml`` for provisioning once the SFS setup is ready.
-
-Create a group variable file called ``group_vars/sfs.all.yaml``, then define the  Smart Fabric Service input model:
+Use the same inventory ``hosts.yaml`` for provisioning once SFS setup is ready. Create a group variable file called ``group_vars/sfs.all.yaml``, then define the SFS input model.
 
 :: 
 
@@ -346,7 +343,7 @@ Create a group variable file called ``group_vars/sfs.all.yaml``, then define the
 
 **Step 2**
 
-Create a playbook called ``sfs_provision.yml``:
+Create a playbook called ``sfs_provision.yml``.
 
 
 :: 
@@ -374,6 +371,6 @@ Create a playbook called ``sfs_provision.yml``:
 
 **Step 3**
 
-Execute the playbook:
+Run the playbook.
 
 ``ansible-playbook -i hosts.yaml sfs_provision.yml``

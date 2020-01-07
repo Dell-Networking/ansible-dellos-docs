@@ -2,17 +2,17 @@
 Installation
 ############
 
-You can install Ansible roles on the control machine using Dell EMC Networking devices.
+You can install Ansible roles on the control machine using Dell EMC devices.
 
 Ansible modules
 ***************
 
-Dell EMC Networking Ansible modules for dellos9, dellos10 and dellos6 are part of the Ansible core. Install Ansible 2.3 or later to use these modules. To use OpenSwitch Ansible "opx_cps" module, install Ansible 2.7 or later. See `Ansible documentation <http://docs.ansible.com/ansible/intro_installation.html>`_ for more information.
+Dell EMC Ansible modules for dellos6, dellos9, and dellos10 are part of the Ansible core. Install Ansible 2.3 or later to use these modules. To use OpenSwitch Ansible "opx_cps" module, install Ansible 2.7 or later. See `Ansible documentation <http://docs.ansible.com/ansible/intro_installation.html>`_ for more information.
 
 Ansible roles
 *************
 
-Install all Dell EMC Networking Ansible roles.
+Install all Dell EMC Ansible roles.
 
 ::
 
@@ -51,12 +51,12 @@ where ``dellemc_roles.txt`` is defined as:
 
 You can also install an individual Dell EMC Networking Ansible role using a single command. For example, to install the AAA role use ``ansible-galaxy install Dell-Networking.dellos.aaa``.
 
-See `Ansible Galaxy <https://galaxy.ansible.com/Dell-Networking/>`_ for more information on Dell EMC Networking Ansible roles.
+See `Ansible Galaxy <https://galaxy.ansible.com/Dell-Networking/>`_ for more information on Dell EMC Ansible roles.
 
-Dell EMC Networking devices
+Dell EMC devices
 ***************************
 
-Dell EMC Networking devices require minimal configuration to run Ansible playbooks.
+Dell EMC devices require minimal configuration to run Ansible playbooks.
 
 OS6
 ---
@@ -107,6 +107,7 @@ OS10
 
 ::
 
+  OS10# config t
   OS10(config)# username ansible password ansible
   OS10(config)# interface mgmt 1/1/1
   OS10(conf-if-ma-1/1/1)# ip address 10.16.149.62/16
@@ -132,5 +133,3 @@ OPX
   passwd: password updated successfully
   root@os10:/config/home/linuxadmin# ifconfig eth0 10.16.148.123 netmask 255.255.255.0 up
   root@os10:/config/home/linuxadmin# route default gw 10.16.148.254 
-
-
