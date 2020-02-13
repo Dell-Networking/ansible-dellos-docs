@@ -101,7 +101,7 @@ Abstracted for ``OS6`` ``OS9`` ``OS10``
 NTP role
 --------
 
-The `dellos-ntp <https://galaxy.ansible.com/Dell-Networking/dellos-ntp/>`_ role facilitates the configuration of network time protocol attributes.
+The `dellos-ntp <https://galaxy.ansible.com/Dell-Networking/dellos-ntp/>`_ role facilitates the configuration of network time protocol (NTP) attributes.
 
 Abstracted for ``OS6`` ``OS9`` ``OS10``
 
@@ -115,7 +115,7 @@ Abstracted for ``OS9``
 QoS role
 --------
 
-The `dellos-qos <https://galaxy.ansible.com/Dell-Networking/dellos-qos/>`_ role facilitates the configuration of quality of service attributes including policy-map and class-map.
+The `dellos-qos <https://galaxy.ansible.com/Dell-Networking/dellos-qos/>`_ role facilitates the configuration of quality of service (QoS) attributes including policy-map and class-map.
 
 Abstracted for ``OS6`` ``OS10``
 
@@ -129,14 +129,14 @@ Abstracted for ``OS10``
 sFlow role
 ----------
 
-The `dellos-sflow <https://galaxy.ansible.com/Dell-Networking/dellos-sflow/>`_ role facilitates the configuration of global and interface-level sflow attributes. This role supports the configuration of sflow collectors at the global level, enabling and disabling of sFlow and specification of sFlow polling-interval, sample-rate, max-datagram sizes, and so on are supported at interface and global levels.
+The `dellos-sflow <https://galaxy.ansible.com/Dell-Networking/dellos-sflow/>`_ role facilitates the configuration of global and interface-level sFlow attributes. This role supports the configuration of sFlow collectors at the global level, enabling and disabling of sFlow and specification of sFlow polling-interval, sample-rate, max-datagram sizes, and so on are supported at interface and global levels.
 
 Abstracted for ``OS9``
 
 SNMP role
 ---------
 
-The `dellos-snmp <https://galaxy.ansible.com/Dell-Networking/dellos-snmp/>`_ role facilitates the configuration of global snmp attributes. It supports the configuration of SNMP server attributes like users, group, community, location, traps, and so on.
+The `dellos-snmp <https://galaxy.ansible.com/Dell-Networking/dellos-snmp/>`_ role facilitates the configuration of global simple network management protocol (SNMP) attributes. It supports the configuration of SNMP server attributes like users, group, community, location, traps, and so on.
 
 Abstracted for ``OS9`` ``OS10``
 
@@ -157,7 +157,7 @@ Abstracted for ``OS6`` ``OS9`` ``OS10``
 VLAN role
 ---------
 
-The `dellos-vlan <https://galaxy.ansible.com/Dell-Networking/dellos-vlan/>`_ role facilitates configuring virtual LAN (VLAN) attributes. This role supports the creation and deletion of a VLAN and its member ports.
+The `dellos-vlan <https://galaxy.ansible.com/Dell-Networking/dellos-vlan/>`_ role facilitates configuring virtual local area network (VLAN) attributes. This role supports the creation and deletion of a VLAN and its member ports.
 
 Abstracted for ``OS6`` ``OS9`` ``OS10``
 
@@ -192,41 +192,41 @@ Abstracted for ``OS6`` ``OS9`` ``OS10``
 VXLAN role
 ----------
 
-The `dellos-vxlan <https://galaxy.ansible.com/Dell-Networking/ansible_role_dellos_vxlan/>`_ role facilitates the configuration of  virtual extensible LAN (VXLAN)   attributes. It supports the configuration of virtual networks, Ethernet virtual private network (EVPN), and network virtualization edge (NVE).
+The `dellos-vxlan <https://galaxy.ansible.com/Dell-Networking/ansible_role_dellos_vxlan/>`_ role facilitates the configuration of  virtual extensible LAN (VxLAN)   attributes. It supports the configuration of virtual networks, Ethernet virtual private network (EVPN), and network virtualization edge (NVE).
 
 Abstracted for ``OS10``
 
 BFD role
 --------
 
-The `dellos-bfd <https://galaxy.ansible.com/Dell-Networking/ansible_role_dellos_bfd/>`_ This role facilitates the configuration of BFD global attributes, and is abstracted for dellos10. It specifically enables configuration of BFD interval , min_rx, multiplier, and role.
+The `dellos-bfd <https://galaxy.ansible.com/Dell-Networking/ansible_role_dellos_bfd/>`_ This role facilitates the configuration of bidirectional forwarding detection (BFD) global attributes, and is abstracted for dellos10. It specifically enables configuration of BFD interval, min_rx, multiplier, and role.
 
 Abstracted for ``OS10``
 
 TEMPLATE role
 -------------
 
-The `dellos-template <https://github.com/Dell-Networking/ansible-role-dellos-template/>`_ This role facilitates the TEXTFSM parsing engine. TextFSM is a template based state machine . It takes the raw string input from the CLI of network devices  dellos10 , run them through a TEXTFSM template and return structured text in the form of a Python dictionary.
+The `dellos-template <https://github.com/Dell-Networking/ansible-role-dellos-template/>`_ This role facilitates the TEXTFSM parsing engine. TextFSM is a template based state machine. It takes the raw string input from the CLI of network devices dellos10, runs them through a TEXTFSM template, and returns structured text in the form of a Python dictionary.
 
 Abstracted for ``OS10``
 
 UPLINK role
 -----------
 
-The `dellos-uplink <https://galaxy.ansible.com/Dell-Networking/ansible_role_dellos_uplink/>`_ This role facilitates the configuration of uplink attributes, and is abstracted for dellos10. It specifically enables configuration of  association between upstream and downstream interfaces known as uplink-state group.
+The `dellos-uplink <https://galaxy.ansible.com/Dell-Networking/ansible_role_dellos_uplink/>`_ This role facilitates the configuration of uplink attributes, and is abstracted for dellos10. It specifically enables configuration of the association between upstream and downstream interfaces known as an uplink-state group.
 
 Abstracted for ``OS10``
 
 Fabric-Summary role
 -------------------
 
-The `dellos_fabric_summary <https://galaxy.ansible.com/Dell-Networking/dellos_fabric_summary/>`_ This role facilitates to get show system information of all the switches in the fabric. 
+The `dellos_fabric_summary <https://galaxy.ansible.com/Dell-Networking/dellos_fabric_summary/>`_ This role facilitates viewing system information of all the switches in the fabric. 
 
 Abstracted for ``OS10``
 
 Network-Validation role
 -----------------------
 
-The `dellos_network_validation <https://galaxy.ansible.com/Dell-Networking/dellos_network_validation/>`_ This role facilitates to verify the Networks. It validates networking features of wiring connection, BGP neighbors, MTU between neighbors and VLT pair. 
+The `dellos_network_validation <https://galaxy.ansible.com/Dell-Networking/dellos_network_validation/>`_ This role facilitates the verification of networks. It validates networking features of wiring connection, BGP neighbors, MTU between neighbors, and VLT pairs. 
 
 Abstracted for ``OS10``
