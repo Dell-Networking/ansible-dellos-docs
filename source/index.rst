@@ -15,6 +15,7 @@ Dell EMC Ansible Documentation
    Installation <install>
    Dell EMC Ansible Modules <modules> 
    Dell EMC Ansible Roles <roles> 
+   Dell EMC Ansible OS10 Collections <os10_collections>
    Support Matrix <support_matrix>
    Examples <examples>
    CLOS Fabric Example <clos_fabric_example>
