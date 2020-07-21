@@ -1,2 +1,4 @@
 # ansible-dellos-docs
-Dell EMC Networking Ansible Documentation
+This repository contains the Dell EMC Ansible documentation.
+
+(c) 2017-2020 Dell Inc. or its subsidiaries. All rights Reserved.
